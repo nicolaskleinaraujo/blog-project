@@ -24,8 +24,8 @@ router.get("/admin/categories", async (req, res) => {
   }
 })
 
-router.delete("/categories/delete", (req, res) => {
-  const id = req.body.id
+router.delete("/categories/delete/:id", (req, res) => {
+  const id = req.params.id
   if (!isNaN(id)) {
     Category.destroy({
       where: {
