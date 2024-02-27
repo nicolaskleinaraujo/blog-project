@@ -10,6 +10,8 @@ router.post("/categories/save", (req, res) => {
       title,
       slug: slugify(title),
     })
+  } else {
+    return
   }
 })
 
@@ -19,6 +21,19 @@ router.get("/admin/categories", async (req, res) => {
     res.status(200).json(categories)
   } catch (error) {
     console.log(error)
+  }
+})
+
+router.delete("/categories/delete", (req, res) => {
+  const id = req.body.id
+  if (!isNaN(id)) {
+    Category.destroy({
+      where: {
+        id: id
+      }
+    })
+  } else {
+    return
   }
 })
 
