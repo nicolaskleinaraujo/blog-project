@@ -2,16 +2,20 @@
 import styles from "./Category.module.css"
 
 // Modules
-import { useState } from "react"
 import dbFetch from "../../axios/config"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Category = () => {
+    const navigate = useNavigate()
     const [title, setTitle] = useState("")
 
     const handleSubmit = async(e) => {
         e.preventDefault()
+        setTitle("")
         try {
-            await dbFetch.post("/categories/save", { title })
+            dbFetch.post("/categories/save", { title })
+            navigate("/")
         } catch (error) {
             console.log(error)
         }
