@@ -8,8 +8,17 @@ router.post("/categories/save", (req, res) => {
   if (title != undefined) {
     Category.create({
       title,
-      slug: slugify(title)
+      slug: slugify(title),
     })
+  }
+})
+
+router.get("/admin/categories", async (req, res) => {
+  try {
+    const categories = await Category.findAll()
+    res.status(200).json(categories)
+  } catch (error) {
+    console.log(error)
   }
 })
 
