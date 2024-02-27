@@ -1,5 +1,5 @@
 // CSS
-import styles from "./Category.module.css"
+import styles from "./AddCategory.module.css"
 
 // Modules
 import dbFetch from "../../axios/config"

@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 // Pages
 import Home from "./Pages/Home/Home"
-import Category from "./Pages/Category/Category"
+import Category from "./Pages/AddCategory/AddCategory"
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/category" element={<Category />} />
+          <Route path="/add-category" element={<Category />} />
         </Routes>
       </BrowserRouter>
     </>
