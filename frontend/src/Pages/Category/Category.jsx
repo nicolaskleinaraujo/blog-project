@@ -28,7 +28,7 @@ const Category = () => {
             {categories &&
                 categories.map((category) => (
                    <li key={category.id}>
-                        {category.title} --- {category.slug}
+                        {category.id} --- {category.title} --- {category.slug}
                    </li> 
                 ))
             }
