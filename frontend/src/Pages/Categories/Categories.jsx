@@ -43,6 +43,7 @@ const Category = () => {
                    <li key={category.id}>
                         {category.id} --- {category.title} --- {category.slug}<br />
                         <button onClick={() => deleteCategory(category.id)}>DELETAR!</button><br />
+                        <a href={`/update-category/${category.id}`}>EDITAR!</a><br />
                    </li>
                 ))
             }
