@@ -14,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/add-category" element={<AddCategory />} />
+          <Route path="/update-category" element={<UpdateCategory />} />
         </Routes>
       </BrowserRouter>
     </>
