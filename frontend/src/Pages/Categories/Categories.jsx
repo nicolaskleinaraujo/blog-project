@@ -4,6 +4,7 @@ import styles from "./Categories.module.css"
 // Modules
 import dbFetch from "../../axios/config"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 const Category = () => {
     const [loading, setLoading] = useState(false)
@@ -41,9 +42,10 @@ const Category = () => {
             {categories &&
                 categories.map((category) => (
                    <li key={category.id}>
-                        {category.id} --- {category.title} --- {category.slug}<br />
-                        <button onClick={() => deleteCategory(category.id)}>DELETAR!</button><br />
-                        <a href={`/update-category/${category.id}`}>EDITAR!</a><br />
+                        {category.title} <br />
+                        <Link to={`/update-category/${category.id}`}> EDITAR!</Link> <br />
+                        <button onClick={() => deleteCategory(category.id)}>DELETAR!</button>
+                        <hr />
                    </li>
                 ))
             }
