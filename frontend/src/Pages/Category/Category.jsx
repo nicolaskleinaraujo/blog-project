@@ -20,11 +20,13 @@ const Category = () => {
     }
 
     const deleteCategory = async(id) => {
-        try {
-            await dbFetch.delete(`/categories/delete/${id}`)
-            setLoading(true)
-        } catch (error) {
-            console.log(error)
+        if (confirm("Deletar categoria?") === true) {
+            try {
+                await dbFetch.delete(`/categories/delete/${id}`)
+                setLoading(true)
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 
