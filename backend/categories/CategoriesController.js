@@ -57,7 +57,7 @@ router.get("/categories/:id", (req, res) => {
         res.status(400).json({ message: "Category not found" })
         return
       }
-      res.status(400).json({ category })
+      res.status(200).json({ category })
     })
 })
 
