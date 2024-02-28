@@ -23,7 +23,6 @@ router.get("/admin/categories", async (req, res) => {
     const categories = await Category.findAll()
     res.status(200).json(categories)
   } catch (error) {
-    console.log(error)
     res.status(400).json({ message: error })
   }
 })
@@ -32,7 +31,7 @@ router.delete("/categories/delete/:id", (req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
-    res.status(400).json({ message: `${id} isn't a number` })
+    res.status(400).json({ message: `${id} isn't a valid id` })
     return
   }
 
@@ -44,12 +43,30 @@ router.delete("/categories/delete/:id", (req, res) => {
   res.status(200).json({ message: "Category removed succesfully" })
 })
 
+router.get("/categories/:id", (req, res) => {
+  const id = req.params.id
+
+  if (isNaN(id)) {
+    res.status(400).json({ message: `${id} isn't a valid id` })
+    return
+  }
+
+  Category.findByPk(id)
+    .then((category) => {
+      if (category === null) {
+        res.status(400).json({ message: "Category not found" })
+        return
+      }
+      res.status(400).json({ category })
+    })
+})
+
 router.post("/categories/update/:id", (req, res) => {
   const id = req.params.id
   const title = req.body.title
 
   if (isNaN(id)) {
-    res.status(400).json({ message: `${id} isn't a number` })
+    res.status(400).json({ message: `${id} isn't a valid id` })
     return
   }
 
