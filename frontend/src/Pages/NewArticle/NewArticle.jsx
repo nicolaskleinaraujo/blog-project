@@ -8,7 +8,7 @@ import { useState, useEffect } from "react"
 const NewArticle = () => {
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-    const [category, setCategory] = useState("")
+    const [articleCategory, setArticleCategory] = useState("")
 
     const [categories, setCategories] = useState([])
     const getCategories = async() => {
@@ -23,7 +23,6 @@ const NewArticle = () => {
     return (
         <div>
             <h1>NewArticle</h1>
-            <button onClick={() => console.log(title, body, categories)}></button>
             <form>
                 <label>
                     <p>Titulo: </p>
@@ -46,11 +45,11 @@ const NewArticle = () => {
                     />
                 </label>
                 <label>
-                    <select>
-                        <option disabled selected>--- SELECIONE UMA CATEGORIA ---</option>
+                    <select defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
+                        <option value="placeholder" disabled hidden>--- SELECIONE UMA CATEGORIA ---</option>
                         {categories && 
                             categories.map((category) => (
-                                <option value={category.id}>{category.title}</option>
+                                <option key={category.id} value={category.id}>{category.title}</option>
                             ))
                         }
                     </select>
