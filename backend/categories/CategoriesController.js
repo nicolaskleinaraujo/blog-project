@@ -3,6 +3,17 @@ const router = express.Router()
 const Category = require("./Category")
 const slugify = require("slugify")
 
+// Get All Categories
+router.get("/admin/categories", async (req, res) => {
+  try {
+    const categories = await Category.findAll()
+    res.status(200).json(categories)
+  } catch (error) {
+    res.status(400).json({ message: error })
+  }
+})
+
+// Add New Category
 router.post("/categories/save", (req, res) => {
   const title = req.body.title
 
@@ -18,15 +29,7 @@ router.post("/categories/save", (req, res) => {
   res.status(200).json({ message: "Category added succesfully" })
 })
 
-router.get("/admin/categories", async (req, res) => {
-  try {
-    const categories = await Category.findAll()
-    res.status(200).json(categories)
-  } catch (error) {
-    res.status(400).json({ message: error })
-  }
-})
-
+// Delete Category
 router.delete("/categories/delete/:id", (req, res) => {
   const id = req.params.id
 
@@ -43,6 +46,7 @@ router.delete("/categories/delete/:id", (req, res) => {
   res.status(200).json({ message: "Category removed succesfully" })
 })
 
+// Get Category By ID (used to update category)
 router.get("/categories/:id", (req, res) => {
   const id = req.params.id
 
@@ -61,6 +65,7 @@ router.get("/categories/:id", (req, res) => {
     })
 })
 
+// Update Category
 router.post("/categories/update/:id", (req, res) => {
   const id = req.params.id
   const title = req.body.title
