@@ -7,7 +7,7 @@ router.post("/categories/save", (req, res) => {
   const title = req.body.title
 
   if (title === undefined) {
-    res.status(400).json({ message: 'Failed to save category' })
+    res.status(400).json({ message: "Failed to save category" })
     return
   }
 
@@ -38,10 +38,29 @@ router.delete("/categories/delete/:id", (req, res) => {
 
   Category.destroy({
     where: {
-      id: id
-    }
+      id,
+    },
   })
   res.status(200).json({ message: "Category removed succesfully" })
+})
+
+router.post("/categories/update/:id", (req, res) => {
+  const id = req.params.id
+  const title = req.body.title
+
+  if (isNaN(id)) {
+    res.status(400).json({ message: `${id} isn't a number` })
+    return
+  }
+
+  Category.update(
+    {
+      title,
+      slug: slugify(title),
+    },
+    { where: { id } }
+  )
+  res.status(200).json({ message: "Category updated succesfully" })
 })
 
 module.exports = router
