@@ -3,10 +3,12 @@ import styles from "./UpdateCategory.module.css"
 
 // Modules
 import dbFetch from "../../axios/config"
-import { useState, useLayoutEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useParams, useNavigate } from "react-router-dom"
 
 const UpdateCategory = () => {
+    const navigate = useNavigate()
+
     const { id } = useParams()
     const [title, setTitle] = useState("")
 
@@ -19,19 +21,19 @@ const UpdateCategory = () => {
         e.preventDefault()
         try {
             await dbFetch.post(`/categories/update/${id}`, { title })
+            navigate("/categories")
         } catch (error) {
             console.log(error)
         }
     }
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         getCategory(id)
     }, [])
 
     return (
         <div>
             <h1>Atualizar Categoria</h1>
-            <button onClick={() => console.log(category)}>teste</button>
             <form onSubmit={handleSubmit}>
                 <label>
                     <p>Titulo: </p>
@@ -43,7 +45,7 @@ const UpdateCategory = () => {
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </label>
-                <button type="submit">Adicionar</button>
+                <button type="submit">Atualizar</button>
             </form>
         </div>
     )
