@@ -15,9 +15,13 @@ const UpdateCategory = () => {
         setTitle(res.data.category.title)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
-        console.log("submited")
+        try {
+            await dbFetch.post(`/categories/update/${id}`, { title })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useLayoutEffect(() => {
