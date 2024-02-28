@@ -6,12 +6,23 @@ import dbFetch from "../../axios/config"
 import { useEffect, useState } from "react"
 
 const Category = () => {
-    const [categories, setCategories] = useState([])
+    const [loading, setLoading] = useState(false)
 
+    const [categories, setCategories] = useState([])
     const getCategories = async() => {
         try {
             const res = await dbFetch.get("/admin/categories")
             setCategories(res.data)
+            if (loading === true) {setLoading(false)}
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const deleteCategory = async(id) => {
+        try {
+            await dbFetch.delete(`/categories/delete/${id}`)
+            setLoading(true)
         } catch (error) {
             console.log(error)
         }
@@ -19,7 +30,7 @@ const Category = () => {
 
     useEffect(() => {
         getCategories()
-    }, [])
+    }, [loading])
 
     return (
         <div>
@@ -28,8 +39,9 @@ const Category = () => {
             {categories &&
                 categories.map((category) => (
                    <li key={category.id}>
-                        {category.id} --- {category.title} --- {category.slug}
-                   </li> 
+                        {category.id} --- {category.title} --- {category.slug}<br />
+                        <button onClick={() => deleteCategory(category.id)}>DELETAR!</button><br />
+                   </li>
                 ))
             }
         </div>
