@@ -16,6 +16,11 @@ const NewArticle = () => {
         setCategories(res.data)
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log("submited")
+    }
+
     useEffect(() => {
         getCategories()
     })
@@ -23,7 +28,7 @@ const NewArticle = () => {
     return (
         <div>
             <h1>NewArticle</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>
                     <p>Titulo: </p>
                     <input 
@@ -54,6 +59,7 @@ const NewArticle = () => {
                         }
                     </select>
                 </label>
+                <button type="submit">Criar</button>
             </form>
         </div>
     )
