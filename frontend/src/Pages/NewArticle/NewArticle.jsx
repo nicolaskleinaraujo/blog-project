@@ -8,11 +8,11 @@ import { useState, useEffect } from "react"
 const NewArticle = () => {
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-    const [articleCategory, setArticleCategory] = useState("")
+    const [articleCategory, setArticleCategory] = useState(0)
 
     const [categories, setCategories] = useState([])
     const getCategories = async() => {
-        const res = await dbFetch.get("/admin/articles/new")
+        const res = await dbFetch.get("/admin/categories")
         setCategories(res.data)
     }
 
