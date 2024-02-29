@@ -7,6 +7,7 @@ import AddCategory from "./Pages/AddCategory/AddCategory"
 import Categories from "./Pages/Categories/Categories"
 import UpdateCategory from "./Pages/UpdateCategory/UpdateCategory"
 import NewArticle from "./Pages/NewArticle/NewArticle"
+import Articles from "./Pages/Articles/Articles"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/add-category" element={<AddCategory />} />
           <Route path="/update-category/:id" element={<UpdateCategory />} />
+          <Route path="/articles" element={<Articles />} />
           <Route path="new-article" element={<NewArticle />} />
         </Routes>
       </BrowserRouter>
