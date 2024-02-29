@@ -1,12 +1,15 @@
 const express = require("express")
 const router = express.Router()
 const Article = require("./Article")
+const Category = require("../categories/Category")
 const slugigy = require("slugify")
 
 // Get All Articles
-router.get("/admin/articles", async(req, res) => {
+router.get("/admin/articles", async (req, res) => {
   try {
-    const articles = await Article.findAll()
+    const articles = await Article.findAll({
+      include: [{ model: Category }],
+    })
     res.status(200).json(articles)
   } catch (error) {
     res.status(400).json(error)
@@ -19,7 +22,7 @@ router.post("/articles/save", (req, res) => {
   const body = req.body.body
   const category = req.body.category
 
-  if (title === undefined || body === undefined || category === undefined){
+  if (title === undefined || body === undefined || category === undefined) {
     res.status(400).json({ message: "Failed to save article" })
     return
   }
