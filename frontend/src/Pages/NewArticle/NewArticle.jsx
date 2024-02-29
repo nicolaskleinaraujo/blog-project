@@ -50,7 +50,7 @@ const NewArticle = () => {
                     />
                 </label>
                 <label>
-                    <select defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
+                    <select name="category" defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
                         <option value="placeholder" disabled hidden>--- SELECIONE UMA CATEGORIA ---</option>
                         {categories && 
                             categories.map((category) => (
