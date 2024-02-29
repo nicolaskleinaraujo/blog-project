@@ -36,4 +36,21 @@ router.post("/articles/save", (req, res) => {
   res.status(200).json({ message: "Article created succesfully" })
 })
 
+// Delete Article
+router.delete("/articles/delete/:id", (req, res) => {
+  const id = req.params.id
+
+  if (isNaN(id)) {
+    res.status(400).json({ message: `${id} isn't a valid id` })
+    return
+  }
+
+  Article.destroy({
+    where: {
+      id,
+    },
+  })
+  res.status(200).json({ message: "Article deleted succesfully" })
+})
+
 module.exports = router
