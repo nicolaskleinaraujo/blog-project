@@ -38,7 +38,6 @@ const Category = () => {
     return (
         <div>
             <h1>Categorias</h1>
-            <button onClick={() => console.log(categories)}>clique</button>
             {categories &&
                 categories.map((category) => (
                    <li key={category.id}>
