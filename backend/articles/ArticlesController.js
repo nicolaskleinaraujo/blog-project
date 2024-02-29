@@ -3,6 +3,16 @@ const router = express.Router()
 const Article = require("./Article")
 const slugigy = require("slugify")
 
+// Get All Articles
+router.get("/admin/articles", async(req, res) => {
+  try {
+    const articles = await Article.findAll()
+    res.status(200).json(articles)
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
+
 // Article Save Route
 router.post("/articles/save", (req, res) => {
   const title = req.body.title

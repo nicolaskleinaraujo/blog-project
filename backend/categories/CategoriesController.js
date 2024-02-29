@@ -9,7 +9,7 @@ router.get("/admin/categories", async (req, res) => {
     const categories = await Category.findAll()
     res.status(200).json(categories)
   } catch (error) {
-    res.status(400).json({ message: error })
+    res.status(400).json(error)
   }
 })
 
