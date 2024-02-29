@@ -7,10 +7,19 @@ import { useState, useEffect } from "react"
 
 const Articles = () => {
     const [articles, setArticles] = useState([])
-
     const getArticles = async() => {
         const res = await dbFetch.get("/admin/articles")
         setArticles(res.data)
+    }
+
+    const deleteArticle = async(id) => {
+        if(confirm("Deletar Artigo?") === true){
+            try {
+                await dbFetch.delete(`/articles/delete/${id}`)
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 
     useEffect(() => {
@@ -24,7 +33,8 @@ const Articles = () => {
             {articles &&
                 articles.map((article) => (
                     <li key={article.id}>
-                        {article.id} --- {article.title} --- {article.slug} --- {article.category.title}
+                        {article.id} --- {article.title} --- {article.slug} --- {article.category.title} <br />
+                        <button onClick={() => deleteArticle(article.id)}>DELETAR!</button>
                     </li>
                 ))
             }
