@@ -24,7 +24,7 @@ const Articles = () => {
             {articles &&
                 articles.map((article) => (
                     <li key={article.id}>
-                        {article.id} --- {article.title} --- {article.slug} --- {article.categoryId}
+                        {article.id} --- {article.title} --- {article.slug} --- {article.category.title}
                     </li>
                 ))
             }
