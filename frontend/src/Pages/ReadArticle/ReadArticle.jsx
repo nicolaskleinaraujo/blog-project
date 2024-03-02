@@ -17,7 +17,7 @@ const ReadArticle = () => {
 
     useEffect(() => {
         getArticle()
-    })
+    }, [])
 
     return (
         <div>
