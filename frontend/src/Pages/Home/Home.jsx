@@ -15,7 +15,7 @@ const Home = () => {
 
   useEffect(() => {
     getArticles()
-  })
+  }, [])
 
   return (
     <div>
