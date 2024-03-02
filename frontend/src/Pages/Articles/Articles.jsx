@@ -24,7 +24,7 @@ const Articles = () => {
 
     useEffect(() => {
         getArticles()
-    })
+    }, [])
 
     return (
         <div>
