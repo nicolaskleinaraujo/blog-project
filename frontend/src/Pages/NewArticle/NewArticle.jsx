@@ -4,8 +4,11 @@ import styles from "./NewArticle.module.css"
 // Modules
 import dbFetch from "../../axios/config"
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 const NewArticle = () => {
+    const navigate = useNavigate()
+
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
     const [articleCategory, setArticleCategory] = useState(0)
@@ -18,12 +21,25 @@ const NewArticle = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("submited")
+        setTitle("")
+        setBody("")
+        setArticleCategory("placeholder")
+
+        try {
+            dbFetch.post("/articles/save", {
+                title,
+                body,
+                category: articleCategory
+            })
+            navigate("/articles")
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {
         getCategories()
-    })
+    }, [])
 
     return (
         <div>
