@@ -8,6 +8,7 @@ const slugigy = require("slugify")
 router.get("/admin/articles", async (req, res) => {
   try {
     const articles = await Article.findAll({
+      order: [["id", "DESC"]],
       include: [{ model: Category }],
     })
     res.status(200).json(articles)
