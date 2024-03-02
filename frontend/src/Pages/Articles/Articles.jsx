@@ -33,7 +33,11 @@ const Articles = () => {
             {articles &&
                 articles.map((article) => (
                     <li key={article.id}>
-                        {article.id} --- {article.title} --- {article.slug} --- {article.category.title} <br />
+                        {article.id} ---
+                        {article.title} ---
+                        {article.slug} ---
+                        {article.categoryId === null ? "Categoria Excluida" : article.category.title} 
+                        <br />
                         <button onClick={() => deleteArticle(article.id)}>DELETAR!</button>
                     </li>
                 ))
