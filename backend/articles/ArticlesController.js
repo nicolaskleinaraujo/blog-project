@@ -17,7 +17,7 @@ router.get("/admin/articles", async (req, res) => {
 })
 
 // Article Save Route
-router.post("/articles/save", (req, res) => {
+router.post("/articles/save", async(req, res) => {
   const title = req.body.title
   const body = req.body.body
   const category = req.body.category
@@ -27,7 +27,7 @@ router.post("/articles/save", (req, res) => {
     return
   }
 
-  Article.create({
+  await Article.create({
     title,
     slug: slugigy(title),
     body,
@@ -37,7 +37,7 @@ router.post("/articles/save", (req, res) => {
 })
 
 // Delete Article
-router.delete("/articles/delete/:id", (req, res) => {
+router.delete("/articles/delete/:id", async(req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
@@ -45,7 +45,7 @@ router.delete("/articles/delete/:id", (req, res) => {
     return
   }
 
-  Article.destroy({
+  await Article.destroy({
     where: {
       id,
     },
