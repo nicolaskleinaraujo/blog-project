@@ -25,7 +25,7 @@ const Home = () => {
             <div key={article.id}>
               <hr />
               {article.title} <br />
-              <Link to={`read-article/${article.slug}`}>LER MAIS</Link>
+              <Link to={`${article.slug}`}>LER MAIS</Link>
               <hr />
             </div>
           ))
