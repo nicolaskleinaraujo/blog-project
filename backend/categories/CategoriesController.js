@@ -14,7 +14,7 @@ router.get("/admin/categories", async (req, res) => {
 })
 
 // Add New Category
-router.post("/categories/save", (req, res) => {
+router.post("/categories/save", async(req, res) => {
   const title = req.body.title
 
   if (title === undefined) {
@@ -22,7 +22,7 @@ router.post("/categories/save", (req, res) => {
     return
   }
 
-  Category.create({
+  await Category.create({
     title,
     slug: slugify(title),
   })
@@ -30,7 +30,7 @@ router.post("/categories/save", (req, res) => {
 })
 
 // Delete Category
-router.delete("/categories/delete/:id", (req, res) => {
+router.delete("/categories/delete/:id", async(req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
@@ -38,7 +38,7 @@ router.delete("/categories/delete/:id", (req, res) => {
     return
   }
 
-  Category.destroy({
+  await Category.destroy({
     where: {
       id,
     },
@@ -47,7 +47,7 @@ router.delete("/categories/delete/:id", (req, res) => {
 })
 
 // Get Category By ID (used to update category)
-router.get("/categories/:id", (req, res) => {
+router.get("/categories/:id", async(req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
@@ -55,7 +55,7 @@ router.get("/categories/:id", (req, res) => {
     return
   }
 
-  Category.findByPk(id)
+  await Category.findByPk(id)
     .then((category) => {
       if (category === null) {
         res.status(400).json({ message: "Category not found" })
@@ -66,7 +66,7 @@ router.get("/categories/:id", (req, res) => {
 })
 
 // Update Category
-router.post("/categories/update/:id", (req, res) => {
+router.post("/categories/update/:id", async(req, res) => {
   const id = req.params.id
   const title = req.body.title
 
@@ -75,7 +75,7 @@ router.post("/categories/update/:id", (req, res) => {
     return
   }
 
-  Category.update(
+  await Category.update(
     {
       title,
       slug: slugify(title),
