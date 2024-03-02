@@ -53,4 +53,21 @@ router.delete("/articles/delete/:id", (req, res) => {
   res.status(200).json({ message: "Article deleted succesfully" })
 })
 
+// Find Article By Slug
+router.get("/article/:slug", async (req, res) => {
+  const slug = req.params.slug
+
+  try {
+    const article = await Article.findOne({
+      where: {
+        slug,
+      },
+      include: { model: Category },
+    })
+    res.status(200).json(article)
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
+
 module.exports = router
