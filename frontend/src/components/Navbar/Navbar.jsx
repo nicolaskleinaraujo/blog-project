@@ -19,7 +19,13 @@ const Navbar = () => {
 
     return (
         <nav>
-
+            <ul>
+                {categories &&
+                    categories.map((category) => (
+                        <Link>{category.title}---</Link>
+                    ))
+                }
+            </ul>
         </nav>
     )
 }

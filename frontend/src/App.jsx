@@ -1,6 +1,9 @@
 // Modules
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
+// Components
+import Navbar from "./components/Navbar/Navbar"
+
 // Pages
 import Home from "./Pages/Home/Home"
 import AddCategory from "./Pages/AddCategory/AddCategory"
@@ -14,6 +17,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
