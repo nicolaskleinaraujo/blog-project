@@ -4,9 +4,10 @@ import styles from "./ArtByCat.module.css"
 // Modules
 import dbFetch from "../../axios/config"
 import { useState, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useLocation } from "react-router-dom"
 
 const ArtByCat = () => {
+    const location = useLocation()
     const { slug } = useParams()
 
     const [category, setCategory] = useState([])
@@ -19,7 +20,7 @@ const ArtByCat = () => {
 
     useEffect(() => {
         getArticles()
-    }, [])
+    }, [location])
 
     return (
         <div>
