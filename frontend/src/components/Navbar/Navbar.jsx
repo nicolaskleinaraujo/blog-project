@@ -22,7 +22,7 @@ const Navbar = () => {
             <ul>
                 {categories &&
                     categories.map((category) => (
-                        <Link key={category.id}>{category.title}---</Link>
+                        <Link key={category.id} to={`/category/${category.slug}`}>{category.title}---</Link>
                     ))
                 }
             </ul>

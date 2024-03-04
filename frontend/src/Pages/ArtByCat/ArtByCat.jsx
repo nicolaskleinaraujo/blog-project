@@ -29,7 +29,7 @@ const ArtByCat = () => {
                     <div key={article.id}>
                         <hr />
                         {article.title} <br />
-                        <Link to={`/${article.slug}`}>LER MAIS</Link>
+                        <Link to={`/article/${article.slug}`}>LER MAIS</Link>
                         <hr />
                     </div>
                 ))
