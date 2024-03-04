@@ -12,6 +12,7 @@ import UpdateCategory from "./Pages/UpdateCategory/UpdateCategory"
 import NewArticle from "./Pages/NewArticle/NewArticle"
 import Articles from "./Pages/Articles/Articles"
 import ReadArticle from "./Pages/ReadArticle/ReadArticle"
+import ArtByCat from "./Pages/ArtByCat/ArtByCat"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/articles" element={<Articles />} />
           <Route path="new-article" element={<NewArticle />} />
           <Route path=":slug" element={<ReadArticle />} />
+          <Route path="/category/:slug" element={<ArtByCat />} />
         </Routes>
       </BrowserRouter>
     </>
