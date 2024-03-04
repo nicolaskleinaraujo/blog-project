@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const Category = require("./Category")
 const slugify = require("slugify")
+const Article = require("../articles/Article")
 
 // Get All Categories
 router.get("/admin/categories", async (req, res) => {
@@ -14,7 +15,7 @@ router.get("/admin/categories", async (req, res) => {
 })
 
 // Add New Category
-router.post("/categories/save", async(req, res) => {
+router.post("/categories/save", async (req, res) => {
   const title = req.body.title
 
   if (title === undefined) {
@@ -30,7 +31,7 @@ router.post("/categories/save", async(req, res) => {
 })
 
 // Delete Category
-router.delete("/categories/delete/:id", async(req, res) => {
+router.delete("/categories/delete/:id", async (req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
@@ -47,7 +48,7 @@ router.delete("/categories/delete/:id", async(req, res) => {
 })
 
 // Get Category By ID (used to update category)
-router.get("/categories/:id", async(req, res) => {
+router.get("/categories/:id", async (req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
@@ -55,18 +56,17 @@ router.get("/categories/:id", async(req, res) => {
     return
   }
 
-  await Category.findByPk(id)
-    .then((category) => {
-      if (category === null) {
-        res.status(400).json({ message: "Category not found" })
-        return
-      }
-      res.status(200).json({ category })
-    })
+  await Category.findByPk(id).then((category) => {
+    if (category === null) {
+      res.status(400).json({ message: "Category not found" })
+      return
+    }
+    res.status(200).json({ category })
+  })
 })
 
 // Update Category
-router.post("/categories/update/:id", async(req, res) => {
+router.post("/categories/update/:id", async (req, res) => {
   const id = req.params.id
   const title = req.body.title
 
@@ -83,6 +83,23 @@ router.post("/categories/update/:id", async(req, res) => {
     { where: { id } }
   )
   res.status(200).json({ message: "Category updated succesfully" })
+})
+
+// Get All Articles In Category
+router.get("/category/:slug", async (req, res) => {
+  const slug = req.params.slug
+
+  try {
+    const articles = await Category.findOne({
+      where: {
+        slug,
+      },
+      include: { model: Article },
+    })
+    res.status(200).json(articles)
+  } catch (error) {
+    res.status(400).json(error)
+  }
 })
 
 module.exports = router
