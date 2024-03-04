@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 // Components
 import Navbar from "./components/Navbar/Navbar"
+import Footer from "./components/Footer/Footer"
 
 // Pages
 import Home from "./Pages/Home/Home"
@@ -29,6 +30,7 @@ function App() {
           <Route path="/article/:slug" element={<ReadArticle />} />
           <Route path="/category/:slug" element={<ArtByCat />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   )
