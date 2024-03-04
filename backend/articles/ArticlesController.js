@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const Article = require("./Article")
 const Category = require("../categories/Category")
-const slugigy = require("slugify")
+const slugify = require("slugify")
 
 // Get All Articles
 router.get("/admin/articles", async (req, res) => {
@@ -30,7 +30,7 @@ router.post("/articles/save", async (req, res) => {
 
   await Article.create({
     title,
-    slug: slugigy(title),
+    slug: slugify(title),
     body,
     categoryId: category,
   })
@@ -68,13 +68,38 @@ router.get("/articles/:id", async (req, res) => {
       id
     },
     include: [{ model: Category }]
-  }).then((article) => {
+  })
+  .then((article) => {
     if (article === null) {
       res.status(400).json({ message: "Article not found" })
       return
     }
     res.status(200).json({ article })
   })
+})
+
+// Update Article
+router.post("/articles/update/:id", async(req, res) => {
+  const id = req.params.id
+  const title = req.body.title
+  const body = req.body.body
+  const category = req.body.category
+
+  if (isNaN(id)) {
+    res.status(400).json({ message: `${id} isn't a valid id` })
+    return
+  }
+
+  await Article.update(
+    {
+      title,
+      slug: slugify(title),
+      body,
+      categoryId: category,
+    },
+    { where: { id } }
+  )
+  res.status(200).json({ message: "Article updated succesfully" })
 })
 
 // Find Article By Slug
