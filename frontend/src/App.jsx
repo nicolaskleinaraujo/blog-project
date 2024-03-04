@@ -14,6 +14,7 @@ import NewArticle from "./Pages/NewArticle/NewArticle"
 import Articles from "./Pages/Articles/Articles"
 import ReadArticle from "./Pages/ReadArticle/ReadArticle"
 import ArtByCat from "./Pages/ArtByCat/ArtByCat"
+import UpdateArticle from "./Pages/UpdateArticle/UpdateArticle"
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/update-category/:id" element={<UpdateCategory />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="new-article" element={<NewArticle />} />
+          <Route path="/update-article/:id" element={<UpdateArticle />} />
           <Route path="/article/:slug" element={<ReadArticle />} />
           <Route path="/category/:slug" element={<ArtByCat />} />
         </Routes>

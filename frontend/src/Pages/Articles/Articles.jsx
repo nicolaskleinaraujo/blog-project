@@ -29,7 +29,6 @@ const Articles = () => {
     return (
         <div>
             <h1>Artigos</h1>
-            <button onClick={() => console.log(articles)}>TESTE</button>
             {articles &&
                 articles.map((article) => (
                     <li key={article.id}>
