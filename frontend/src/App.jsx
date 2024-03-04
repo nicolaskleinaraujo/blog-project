@@ -26,7 +26,7 @@ function App() {
           <Route path="/update-category/:id" element={<UpdateCategory />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="new-article" element={<NewArticle />} />
-          <Route path=":slug" element={<ReadArticle />} />
+          <Route path="/article/:slug" element={<ReadArticle />} />
           <Route path="/category/:slug" element={<ArtByCat />} />
         </Routes>
       </BrowserRouter>
