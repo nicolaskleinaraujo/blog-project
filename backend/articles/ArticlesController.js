@@ -18,7 +18,7 @@ router.get("/admin/articles", async (req, res) => {
 })
 
 // Article Save Route
-router.post("/articles/save", async(req, res) => {
+router.post("/articles/save", async (req, res) => {
   const title = req.body.title
   const body = req.body.body
   const category = req.body.category
@@ -38,7 +38,7 @@ router.post("/articles/save", async(req, res) => {
 })
 
 // Delete Article
-router.delete("/articles/delete/:id", async(req, res) => {
+router.delete("/articles/delete/:id", async (req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
@@ -54,6 +54,29 @@ router.delete("/articles/delete/:id", async(req, res) => {
   res.status(200).json({ message: "Article deleted succesfully" })
 })
 
+// Get Article By ID (used to update category)
+router.get("/articles/:id", async (req, res) => {
+  const id = req.params.id
+
+  if (isNaN(id)) {
+    res.status(400).json({ message: `${id} isn't a valid id` })
+    return
+  }
+
+  await Article.findOne({
+    where: {
+      id
+    },
+    include: [{ model: Category }]
+  }).then((article) => {
+    if (article === null) {
+      res.status(400).json({ message: "Article not found" })
+      return
+    }
+    res.status(200).json({ article })
+  })
+})
+
 // Find Article By Slug
 router.get("/article/:slug", async (req, res) => {
   const slug = req.params.slug
@@ -63,7 +86,7 @@ router.get("/article/:slug", async (req, res) => {
       where: {
         slug,
       },
-      include: { model: Category },
+      include: [{ model: Category }],
     })
     res.status(200).json(article)
   } catch (error) {
