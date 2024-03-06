@@ -2,7 +2,7 @@
 import styles from "./AddCategory.module.css"
 
 // Modules
-import dbFetch from "../../axios/config"
+import dbFetch from "../../../axios/config"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 

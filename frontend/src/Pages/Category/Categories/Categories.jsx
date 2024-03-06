@@ -2,7 +2,7 @@
 import styles from "./Categories.module.css"
 
 // Modules
-import dbFetch from "../../axios/config"
+import dbFetch from "../../../axios/config"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 

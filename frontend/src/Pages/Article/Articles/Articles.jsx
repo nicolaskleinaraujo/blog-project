@@ -2,7 +2,7 @@
 import styles from "./Articles.module.css"
 
 // Modules
-import dbFetch from "../../axios/config"
+import dbFetch from "../../../axios/config"
 import { useState, useEffect } from "react"
 
 const Articles = () => {
