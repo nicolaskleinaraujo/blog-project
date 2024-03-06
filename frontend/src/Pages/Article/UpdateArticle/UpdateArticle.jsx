@@ -26,7 +26,8 @@ const UpdateArticle = () => {
         setCategories(res.data)
     }
 
-    const handleSubmit = async() => {
+    const handleSubmit = async(e) => {
+        e.preventDefault()
         try {
             await dbFetch.post(`/articles/update/${id}`, {
                 title,
