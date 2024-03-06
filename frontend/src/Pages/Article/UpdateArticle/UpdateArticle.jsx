@@ -27,7 +27,16 @@ const UpdateArticle = () => {
     }
 
     const handleSubmit = async() => {
-
+        try {
+            await dbFetch.post(`/articles/update/${id}`, {
+                title,
+                body,
+                category: articleCategory,
+            })
+            navigate("/articles")
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     useEffect(() => {
@@ -38,7 +47,7 @@ const UpdateArticle = () => {
     return (
         <div>
             <h1>Atualizar Artigo</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>
                     <p>Titulo: </p>
                     <input 
