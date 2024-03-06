@@ -4,6 +4,7 @@ import styles from "./Articles.module.css"
 // Modules
 import dbFetch from "../../../axios/config"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 const Articles = () => {
     const [articles, setArticles] = useState([])
@@ -37,6 +38,7 @@ const Articles = () => {
                         {article.slug} ---
                         {article.categoryId === null ? "Categoria Excluida" : article.category.title} 
                         <br />
+                        <Link to={`/update-article/${article.id}`}>EDITAR!</Link>
                         <button onClick={() => deleteArticle(article.id)}>DELETAR!</button>
                     </li>
                 ))
