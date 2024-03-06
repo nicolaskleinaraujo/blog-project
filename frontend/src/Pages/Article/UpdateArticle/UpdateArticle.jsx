@@ -10,10 +10,26 @@ const UpdateArticle = () => {
     const navigate = useNavigate()
     const { id } = useParams()
 
+    const [title, setTitle] = useState("")
+    const [body, setBody] = useState("")
+    const [articleCategory, setArticleCategory] = useState("")
     const getArticle = async() => {
-        const res = dbFetch.get("")
+        const res = await dbFetch.get(`/articles/${id}`)
+        setTitle(res.data.article.title)
+        setBody(res.data.article.body)
+        setArticleCategory(res.data.article.category.title)
     }
 
+    const [categories, setCategories] = useState([])
+    const getCategories = async() => {
+        const res = await dbFetch.get("/admin/categories")
+        setCategories(res.data)
+    }
+
+    useEffect(() => {
+        getArticle()
+        getCategories()
+    }, [])
 
     return (
         <div>
