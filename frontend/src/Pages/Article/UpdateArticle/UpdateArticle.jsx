@@ -26,6 +26,10 @@ const UpdateArticle = () => {
         setCategories(res.data)
     }
 
+    const handleSubmit = async() => {
+
+    }
+
     useEffect(() => {
         getArticle()
         getCategories()
@@ -34,6 +38,41 @@ const UpdateArticle = () => {
     return (
         <div>
             <h1>Atualizar Artigo</h1>
+            <form>
+                <label>
+                    <p>Titulo: </p>
+                    <input 
+                        type="text" 
+                        name="title" 
+                        id="title" 
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                    />
+                </label>
+
+                <label>
+                    <p>Texto: </p>
+                    <textarea 
+                        name="body" 
+                        id="body" 
+                        cols="30" 
+                        rows="10" 
+                        onChange={(e) => setBody(e.target.value)} 
+                        value={body}
+                    ></textarea>
+                </label>
+
+                <select name="category" defaultValue={articleCategory.id} onChange={(e) => setArticleCategory(e.target.value)}>
+                    <option value={articleCategory.id} disabled hidden>{articleCategory}</option>
+                    {categories &&
+                        categories.map((category) => (
+                            <option key={category.id} value={category.id}>{category.title}</option>
+                        ))
+                    }
+                </select>
+
+                <input type="submit" value="Atualizar" />
+            </form>
         </div>
     )
 }

@@ -55,6 +55,7 @@ const NewArticle = () => {
                         value={title}
                     />
                 </label>
+
                 <label>
                     <p>Texto: </p>
                     <input 
@@ -65,16 +66,16 @@ const NewArticle = () => {
                         value={body}
                     />
                 </label>
-                <label>
-                    <select name="category" defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
-                        <option value="placeholder" disabled hidden>--- SELECIONE UMA CATEGORIA ---</option>
-                        {categories && 
-                            categories.map((category) => (
-                                <option key={category.id} value={category.id}>{category.title}</option>
-                            ))
-                        }
-                    </select>
-                </label>
+
+                <select name="category" defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
+                    <option value="placeholder" disabled hidden>--- SELECIONE UMA CATEGORIA ---</option>
+                    {categories && 
+                        categories.map((category) => (
+                            <option key={category.id} value={category.id}>{category.title}</option>
+                        ))
+                    }
+                </select>
+                
                 <button type="submit">Criar</button>
             </form>
         </div>
