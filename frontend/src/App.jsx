@@ -7,14 +7,14 @@ import Footer from "./components/Footer/Footer"
 
 // Pages
 import Home from "./Pages/Home/Home"
-import AddCategory from "./Pages/AddCategory/AddCategory"
-import Categories from "./Pages/Categories/Categories"
-import UpdateCategory from "./Pages/UpdateCategory/UpdateCategory"
-import NewArticle from "./Pages/NewArticle/NewArticle"
-import Articles from "./Pages/Articles/Articles"
-import ReadArticle from "./Pages/ReadArticle/ReadArticle"
-import ArtByCat from "./Pages/ArtByCat/ArtByCat"
-import UpdateArticle from "./Pages/UpdateArticle/UpdateArticle"
+import AddCategory from "./Pages/Category/AddCategory/AddCategory"
+import Categories from "./Pages/Category/Categories/Categories"
+import UpdateCategory from "./Pages/Category/UpdateCategory/UpdateCategory"
+import NewArticle from "./Pages/Article/NewArticle/NewArticle"
+import Articles from "./Pages/Article/Articles/Articles"
+import ReadArticle from "./Pages/Article/ReadArticle/ReadArticle"
+import ArtByCat from "./Pages/Article/ArtByCat/ArtByCat"
+import UpdateArticle from "./Pages/Article/UpdateArticle/UpdateArticle"
 
 function App() {
   return (
