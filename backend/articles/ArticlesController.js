@@ -120,17 +120,17 @@ router.get("/article/:slug", async (req, res) => {
 
 // Get pages to show articles
 router.get("/articles/page/:num", async (req, res) => {
-  const page = parseInt(req.params.num)
-  const offset = 0
+  const num = req.params.num
+  let offset = 0
 
-  if (isNaN(page) || page === 1) {
+  if (isNaN(num) || num == 1) {
     offset = 0
   } else {
-    offset = page * 8
+    offset = parseInt(num) * 4
   }
 
   try {
-    const page = Article.findAndCountAll({
+    const page = await Article.findAndCountAll({
       limit: 8,
       offset,
     })
