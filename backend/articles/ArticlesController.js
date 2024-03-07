@@ -134,7 +134,18 @@ router.get("/articles/page/:num", async (req, res) => {
       limit: 8,
       offset,
     })
-    res.status(200).json(page)
+
+    let next = true
+    if (offset + 8 >= page.count) {
+      next = false
+    }
+
+    const pageController = {
+      page,
+      next
+    }
+
+    res.status(200).json(pageController)
   } catch (err) {
     res.status(400).json(err)
   }
