@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const User = require("./User")
+const bcrypt = require("bcryptjs")
 
 router.get("/admin/users", (req, res) => {
   res.send("rota de listagem de usuarios")
@@ -16,9 +17,12 @@ router.post("/users/save", async (req, res) => {
     return
   }
 
+  const salt = bcrypt.genSaltSync(10)
+  const hash = bcrypt.hashSync(password, salt)
+  
   await User.create({
     email,
-    password,
+    password: hash,
   })
   res.status(200).json({ message: "User created succesfully" })
 })
