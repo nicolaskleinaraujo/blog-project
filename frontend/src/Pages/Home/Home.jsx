@@ -4,9 +4,11 @@ import styles from "./Home.module.css"
 // Modules
 import dbFetch from "../../axios/config"
 import { useState, useEffect } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 
 const Home = () => {
+  const location = useLocation()
+
   let { num } = useParams()
   if (isNaN(num) || null){
     num = 1
@@ -22,7 +24,7 @@ const Home = () => {
 
   useEffect(() => {
     getArticles()
-  }, [])
+  }, [location])
 
   return (
     <div>
