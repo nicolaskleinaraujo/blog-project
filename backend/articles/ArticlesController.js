@@ -3,7 +3,6 @@ const router = express.Router()
 const Article = require("./Article")
 const Category = require("../categories/Category")
 const slugify = require("slugify")
-const { removeTicks } = require("sequelize/types/utils")
 
 // Get All Articles
 router.get("/admin/articles", async (req, res) => {
