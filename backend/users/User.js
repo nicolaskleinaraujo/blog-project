@@ -12,4 +12,4 @@ const User = connection.define("users", {
   },
 })
 
-module.exports = Category
+module.exports = User
