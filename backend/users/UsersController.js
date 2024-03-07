@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const User = require("./User")
 const bcrypt = require("bcryptjs")
+const adminAuth = require("../middlewares/adminAuth")
 
 // User save route
 router.post("/users/save", async (req, res) => {
@@ -58,6 +59,17 @@ router.post("/authenticate", async (req, res) => {
     res.status(200).json({ message: "Logged succesfully" })
   } catch (err) {
     res.status(400).json(err)
+  }
+})
+
+// Try Authentication Route
+router.get("/try-authenticate", (req, res) => {
+  const tryAuth = adminAuth()
+
+  if (tryAuth) {
+    res.status(200).json(true)
+  } else {
+    res.status(400).json(false)
   }
 })
 
