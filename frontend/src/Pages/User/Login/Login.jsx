@@ -3,17 +3,29 @@ import styles from "./Login.module.css"
 
 // Modules
 import dbFetch from "../../../axios/config"
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
+    const navigate = useNavigate()
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
     const handleSubmit = async(e) => {
-        e.preventDefault
-    }
+        e.preventDefault()
+        setEmail("")
+        setPassword("")
 
-    
+        const res = await dbFetch.post("/authenticate", {
+            email,
+            password
+        })
+
+        if(res.status === 200) {
+            navigate("/")
+        }
+    }
 
     return (
         <div>
