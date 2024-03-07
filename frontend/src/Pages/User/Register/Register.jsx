@@ -14,6 +14,16 @@ const Register = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
+
+        try {
+            await dbFetch.post("/users/save", {
+                email,
+                password
+            })
+            navigate("/")
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (
@@ -42,6 +52,8 @@ const Register = () => {
                         value={password} 
                     />
                 </label>
+
+                <input type="submit" value="Criar" />
             </form>
         </div>
     )
