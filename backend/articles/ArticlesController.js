@@ -133,6 +133,7 @@ router.get("/articles/page/:num", async (req, res) => {
     const page = await Article.findAndCountAll({
       limit: 8,
       offset,
+      order: [["id", "DESC"]],
     })
 
     let next = true
@@ -142,7 +143,7 @@ router.get("/articles/page/:num", async (req, res) => {
 
     const pageController = {
       page,
-      next
+      next,
     }
 
     res.status(200).json(pageController)
