@@ -1,5 +1,9 @@
 // Modules
+import { useContext } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+
+// Auth Context
+import { AuthContext } from "./context/AuthContext"
 
 // Components
 import Navbar from "./components/Navbar/Navbar"
@@ -19,6 +23,8 @@ import ArtByCat from "./Pages/Article/ArtByCat/ArtByCat"
 import UpdateArticle from "./Pages/Article/UpdateArticle/UpdateArticle"
 
 function App() {
+  const { auth, setAuth } = useContext(AuthContext)
+
   return (
     <>
       <BrowserRouter>
