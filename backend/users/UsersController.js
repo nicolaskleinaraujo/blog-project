@@ -42,34 +42,21 @@ router.post("/authenticate", async (req, res) => {
       email,
     },
   })
-  if (user === undefined) {
-    res.status(400).json({ message: "Incorrect login" })
+  if (user === null) {
+    res.status(400).json({ message: "Incorrect credentials" })
     return
   }
 
-  try {
-    const testPassword = bcrypt.compareSync(password, user.password)
+  const testPassword = bcrypt.compareSync(password, user.password)
 
-    if (testPassword) {
-      req.session.user = {
-        id: user.id,
-        email: user.email,
-      }
+  if (testPassword) {
+    req.session.user = {
+      id: user.id,
+      email: user.email,
     }
     res.status(200).json({ message: "Logged succesfully" })
-  } catch (err) {
-    res.status(400).json(err)
-  }
-})
-
-// Try Authentication Route
-router.get("/try-authenticate", (req, res) => {
-  const tryAuth = adminAuth()
-
-  if (tryAuth) {
-    res.status(200).json(true)
   } else {
-    res.status(400).json(false)
+    res.status(400).json({ message: "Incorrect credentials" })
   }
 })
 
