@@ -6,9 +6,7 @@ const connection = require("./database/db")
 
 const categoriesController = require("./categories/CategoriesController")
 const articlesController = require("./articles/ArticlesController")
-
-const Category = require("./categories/Category")
-const Article = require("./articles/Article")
+const usersController = require("./users/UsersController")
 
 // Body Parser and Cors
 app.use(
@@ -28,10 +26,7 @@ connection
 // Controller Routes
 app.use("/", categoriesController)
 app.use("/", articlesController)
-
-app.get("/", (req, res) => {
-  res.send("Bem-vindo ao meu site")
-})
+app.use("/", usersController)
 
 app.listen(3000, () => {
   console.log("Server running!")
