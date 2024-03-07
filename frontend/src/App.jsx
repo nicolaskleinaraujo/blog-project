@@ -22,6 +22,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/:num" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/add-category" element={<AddCategory />} />
