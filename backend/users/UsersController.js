@@ -12,6 +12,14 @@ router.post("/users/save", async (req, res) => {
   const email = req.body.email
   const password = req.body.password
 
+  const testEmail = await User.findOne({
+    where: { email },
+  })
+  if (testEmail != undefined){
+    res.status(400).json({ message: "This email is already cadastered" })
+    return
+  }
+
   if (email === undefined || password === undefined) {
     res.status(400).json({ message: "Failed to save user" })
     return
@@ -19,7 +27,7 @@ router.post("/users/save", async (req, res) => {
 
   const salt = bcrypt.genSaltSync(10)
   const hash = bcrypt.hashSync(password, salt)
-  
+
   await User.create({
     email,
     password: hash,
