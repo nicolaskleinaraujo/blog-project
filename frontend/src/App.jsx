@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar"
 import Footer from "./components/Footer/Footer"
 
 // Pages
+import Login from "./Pages/User/Login/Login"
 import Home from "./Pages/Home/Home"
 import AddCategory from "./Pages/Category/AddCategory/AddCategory"
 import Categories from "./Pages/Category/Categories/Categories"
@@ -22,6 +23,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/:num" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
