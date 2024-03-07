@@ -3,6 +3,7 @@ const router = express.Router()
 const Category = require("./Category")
 const slugify = require("slugify")
 const Article = require("../articles/Article")
+const adminAuth = require("../middlewares/adminAuth")
 
 // Get All Categories
 router.get("/admin/categories", async (req, res) => {
@@ -15,7 +16,7 @@ router.get("/admin/categories", async (req, res) => {
 })
 
 // Add New Category
-router.post("/categories/save", async (req, res) => {
+router.post("/categories/save", adminAuth, async (req, res) => {
   const title = req.body.title
 
   if (title === undefined) {
@@ -31,7 +32,7 @@ router.post("/categories/save", async (req, res) => {
 })
 
 // Delete Category
-router.delete("/categories/delete/:id", async (req, res) => {
+router.delete("/categories/delete/:id", adminAuth, async (req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
@@ -48,7 +49,7 @@ router.delete("/categories/delete/:id", async (req, res) => {
 })
 
 // Get Category By ID (used to update category)
-router.get("/categories/:id", async (req, res) => {
+router.get("/categories/:id", adminAuth, async (req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
@@ -66,7 +67,7 @@ router.get("/categories/:id", async (req, res) => {
 })
 
 // Update Category
-router.post("/categories/update/:id", async (req, res) => {
+router.post("/categories/update/:id", adminAuth, async (req, res) => {
   const id = req.params.id
   const title = req.body.title
 

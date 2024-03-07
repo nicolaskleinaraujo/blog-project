@@ -19,7 +19,7 @@ router.get("/admin/articles", adminAuth, async (req, res) => {
 })
 
 // Article Save Route
-router.post("/articles/save", async (req, res) => {
+router.post("/articles/save", adminAuth, async (req, res) => {
   const title = req.body.title
   const body = req.body.body
   const category = req.body.category
@@ -39,7 +39,7 @@ router.post("/articles/save", async (req, res) => {
 })
 
 // Delete Article
-router.delete("/articles/delete/:id", async (req, res) => {
+router.delete("/articles/delete/:id", adminAuth, async (req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
@@ -56,7 +56,7 @@ router.delete("/articles/delete/:id", async (req, res) => {
 })
 
 // Get Article By ID (used to update category)
-router.get("/articles/:id", async (req, res) => {
+router.get("/articles/:id", adminAuth, async (req, res) => {
   const id = req.params.id
 
   if (isNaN(id)) {
@@ -79,7 +79,7 @@ router.get("/articles/:id", async (req, res) => {
 })
 
 // Update Article
-router.post("/articles/update/:id", async (req, res) => {
+router.post("/articles/update/:id", adminAuth, async (req, res) => {
   const id = req.params.id
   const title = req.body.title
   const body = req.body.body
