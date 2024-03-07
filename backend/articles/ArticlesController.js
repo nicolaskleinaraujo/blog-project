@@ -3,6 +3,7 @@ const router = express.Router()
 const Article = require("./Article")
 const Category = require("../categories/Category")
 const slugify = require("slugify")
+const { removeTicks } = require("sequelize/types/utils")
 
 // Get All Articles
 router.get("/admin/articles", async (req, res) => {
@@ -65,11 +66,10 @@ router.get("/articles/:id", async (req, res) => {
 
   await Article.findOne({
     where: {
-      id
+      id,
     },
-    include: [{ model: Category }]
-  })
-  .then((article) => {
+    include: [{ model: Category }],
+  }).then((article) => {
     if (article === null) {
       res.status(400).json({ message: "Article not found" })
       return
@@ -79,7 +79,7 @@ router.get("/articles/:id", async (req, res) => {
 })
 
 // Update Article
-router.post("/articles/update/:id", async(req, res) => {
+router.post("/articles/update/:id", async (req, res) => {
   const id = req.params.id
   const title = req.body.title
   const body = req.body.body
@@ -114,8 +114,30 @@ router.get("/article/:slug", async (req, res) => {
       include: [{ model: Category }],
     })
     res.status(200).json(article)
-  } catch (error) {
-    res.status(400).json(error)
+  } catch (err) {
+    res.status(400).json(err)
+  }
+})
+
+// Get pages to show articles
+router.get("/articles/page/:num", async (req, res) => {
+  const page = parseInt(req.params.num)
+  const offset = 0
+
+  if (isNaN(page) || page === 1) {
+    offset = 0
+  } else {
+    offset = page * 8
+  }
+
+  try {
+    const page = Article.findAndCountAll({
+      limit: 8,
+      offset,
+    })
+    res.status(200).json(page)
+  } catch (err) {
+    res.status(400).json(err)
   }
 })
 
