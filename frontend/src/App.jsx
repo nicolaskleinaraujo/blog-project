@@ -1,7 +1,7 @@
 // Modules
 import dbFetch from "./axios/config"
-import { useContext, useEffect } from "react"
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom"
+import { useEffect, useContext } from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 // Auth Context
 import { AuthContext } from "./context/AuthContext"
@@ -32,9 +32,11 @@ function App() {
         Authorization: "Bearer " + localStorage.getItem("token")
       }
     })
-    
-    if(res.status == 200) {
+
+    if (res.status === 200) {
       setAuth(true)
+    } else {
+      setAuth(false)
     }
   }
 
