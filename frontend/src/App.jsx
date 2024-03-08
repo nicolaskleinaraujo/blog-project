@@ -1,6 +1,7 @@
 // Modules
-import { useContext } from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import dbFetch from "./axios/config"
+import { useContext, useEffect } from "react"
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom"
 
 // Auth Context
 import { AuthContext } from "./context/AuthContext"
@@ -24,6 +25,17 @@ import UpdateArticle from "./Pages/Article/UpdateArticle/UpdateArticle"
 
 function App() {
   const { auth, setAuth } = useContext(AuthContext)
+
+  const tryAuth = async() => {
+    const res = dbFetch.get("/try-authenticate")
+    console.log(res)
+    setAuth(res)
+    console.log(auth)
+  }
+
+  useEffect(() => {
+    tryAuth()
+  }, [])
 
   return (
     <>
