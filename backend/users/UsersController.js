@@ -73,8 +73,8 @@ router.post("/authenticate", async (req, res) => {
 })
 
 // Try Authenticate Route
-router.get("/try-authenticate", adminAuth,async(req, res) => {
-  res.status(200).json({msg: "deu certo"})
+router.get("/try-authenticate", adminAuth, async (req, res) => {
+  res.status(200).json({ message: "Logged succesfully" })
 })
 
 module.exports = router
