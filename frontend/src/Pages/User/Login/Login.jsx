@@ -8,10 +8,12 @@ import { useNavigate } from "react-router-dom"
 
 const Login = () => {
     const navigate = useNavigate()
+    
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const [token, setToken] = useState("")
     const handleSubmit = async(e) => {
         e.preventDefault()
         setEmail("")
@@ -21,8 +23,12 @@ const Login = () => {
             email,
             password
         })
+        console.log(res)
+        setToken(res.data.token)
+        console.log(token)
 
         if(res.status === 200) {
+            localStorage.setItem("token", token)
             navigate("/")
         }
     }
