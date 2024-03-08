@@ -1,5 +1,6 @@
 // Modules
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import PrivateRoutes from "./PrivateRoutes"
 
 // Components
 import Navbar from "../components/Navbar/Navbar"
@@ -29,14 +30,18 @@ const Router = () => {
                     <Route exact path="/login" element={<Login />} />
                     <Route exact path="/register" element={<Register />} />
                     <Route exact path="/:num" element={<Home />} />
-                    <Route exact path="/categories" element={<Categories />} />
-                    <Route exact path="/add-category" element={<AddCategory />} />
-                    <Route exact path="/update-category/:id" element={<UpdateCategory />} />
-                    <Route exact path="/articles" element={<Articles />} />
-                    <Route exact path="new-article" element={<NewArticle />} />
-                    <Route exact path="/update-article/:id" element={<UpdateArticle />} />
                     <Route exact path="/article/:slug" element={<ReadArticle />} />
                     <Route exact path="/category/:slug" element={<ArtByCat />} />
+
+                    <Route element={<PrivateRoutes />}>
+                        <Route exact path="/categories" element={<Categories />} />
+                        <Route exact path="/add-category" element={<AddCategory />} />
+                        <Route exact path="/update-category/:id" element={<UpdateCategory />} />
+                        <Route exact path="/articles" element={<Articles />} />
+                        <Route exact path="/new-article" element={<NewArticle />} />
+                        <Route exact path="/update-article/:id" element={<UpdateArticle />} />
+                    </Route>
+
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <Footer />
