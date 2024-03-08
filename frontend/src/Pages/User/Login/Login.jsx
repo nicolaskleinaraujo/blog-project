@@ -3,16 +3,19 @@ import styles from "./Login.module.css"
 
 // Modules
 import dbFetch from "../../../axios/config"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
+
+// Context
+import { AuthContext } from "../../../context/AuthContext"
 
 const Login = () => {
     const navigate = useNavigate()
-    
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const { setAuth } = useContext(AuthContext)
     const handleSubmit = async(e) => {
         e.preventDefault()
         setEmail("")
@@ -25,6 +28,7 @@ const Login = () => {
 
         if(res.status === 200) {
             localStorage.setItem("token", res.data.token)
+            setAuth(true)
             navigate("/")
         }
     }

@@ -24,7 +24,7 @@ import ArtByCat from "./Pages/Article/ArtByCat/ArtByCat"
 import UpdateArticle from "./Pages/Article/UpdateArticle/UpdateArticle"
 
 function App() {
-  const { auth, setAuth } = useContext(AuthContext)
+  const { setAuth } = useContext(AuthContext)
 
   const tryAuth = async() => {
     const res = await dbFetch.get("/try-authenticate", {
