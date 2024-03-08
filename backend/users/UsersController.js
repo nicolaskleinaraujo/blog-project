@@ -63,13 +63,18 @@ router.post("/authenticate", async (req, res) => {
         if (err) {
           res.status(400).json({ message: "Incorrect credentials" })
         } else {
-          res.status(200).json({ message: "Logged succesfully" })
+          res.status(200).json({ message: "Logged succesfully", token })
         }
       }
     )
   } else {
     res.status(400).json({ message: "Incorrect credentials" })
   }
+})
+
+// Try Authenticate Route
+router.get("/try-authenticate", adminAuth,async(req, res) => {
+  res.status(200).json({msg: "deu certo"})
 })
 
 module.exports = router
