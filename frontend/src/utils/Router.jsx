@@ -17,6 +17,7 @@ import Articles from "../Pages/Article/Articles/Articles"
 import ReadArticle from "../Pages/Article/ReadArticle/ReadArticle"
 import ArtByCat from "../Pages/Article/ArtByCat/ArtByCat"
 import UpdateArticle from "../Pages/Article/UpdateArticle/UpdateArticle"
+import NotFound from "../Pages/NotFound/NotFound"
 
 const Router = () => {
     return (
@@ -36,6 +37,7 @@ const Router = () => {
                     <Route exact path="/update-article/:id" element={<UpdateArticle />} />
                     <Route exact path="/article/:slug" element={<ReadArticle />} />
                     <Route exact path="/category/:slug" element={<ArtByCat />} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
