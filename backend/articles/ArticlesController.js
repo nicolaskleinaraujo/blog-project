@@ -6,7 +6,7 @@ const slugify = require("slugify")
 const adminAuth = require("../middlewares/adminAuth")
 
 // Get All Articles
-router.get("/admin/articles", adminAuth, async (req, res) => {
+router.get("/admin/articles", async (req, res) => {
   try {
     const articles = await Article.findAll({
       order: [["id", "DESC"]],
