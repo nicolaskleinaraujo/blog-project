@@ -1,8 +1,10 @@
+const dotenv = require("dotenv").config()
 const express = require("express")
 const router = express.Router()
 const User = require("./User")
 const bcrypt = require("bcryptjs")
 const adminAuth = require("../middlewares/adminAuth")
+const jwt = require("jsonwebtoken")
 
 // User save route
 router.post("/users/save", async (req, res) => {
@@ -50,11 +52,21 @@ router.post("/authenticate", async (req, res) => {
   const testPassword = bcrypt.compareSync(password, user.password)
 
   if (testPassword) {
-    req.session.user = {
-      id: user.id,
-      email: user.email,
-    }
-    res.status(200).json({ message: "Logged succesfully" })
+    jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      process.env.jwt_secret,
+      { expiresIn: "48h" },
+      (err, token) => {
+        if (err) {
+          res.status(400).json({ message: "Incorrect credentials" })
+        } else {
+          res.status(200).json({ message: "Logged succesfully" })
+        }
+      }
+    )
   } else {
     res.status(400).json({ message: "Incorrect credentials" })
   }
