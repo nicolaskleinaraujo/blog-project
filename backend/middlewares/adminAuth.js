@@ -1,9 +1,8 @@
 function adminAuth(req, res, next) {
-  if (req.session.user) {
+  if (req.session.user != undefined) {
     next()
-    return true
   } else {
-    return false
+    res.status(400).json(false)
   }
 }
 
