@@ -27,10 +27,15 @@ function App() {
   const { auth, setAuth } = useContext(AuthContext)
 
   const tryAuth = async() => {
-    const res = dbFetch.get("/try-authenticate")
-    console.log(res)
-    setAuth(res)
-    console.log(auth)
+    const res = await dbFetch.get("/try-authenticate", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+      }
+    })
+    
+    if(res.status == 200) {
+      setAuth(true)
+    }
   }
 
   useEffect(() => {
