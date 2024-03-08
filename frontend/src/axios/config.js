@@ -4,4 +4,10 @@ const dbFetch = axios.create({
   baseURL: "http://localhost:3000",
 })
 
-export default dbFetch
+const axiosConfig = {
+  headers: {
+    Authorization: "Bearer " + localStorage.getItem("token")
+  }
+}
+
+module.exports = dbFetch, axiosConfig
