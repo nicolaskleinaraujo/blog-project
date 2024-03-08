@@ -20,7 +20,7 @@ const Register = () => {
                 email,
                 password
             })
-            navigate("/")
+            navigate("/login")
         } catch (err) {
             console.log(err)
         }
