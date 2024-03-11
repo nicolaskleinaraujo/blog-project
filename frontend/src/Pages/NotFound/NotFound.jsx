@@ -1,6 +1,8 @@
 // CSS
 import styles from "./NotFound.module.css"
 
+// Not finished
+
 const NotFound = () => {
     return (
         <div>
