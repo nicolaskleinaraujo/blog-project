@@ -39,7 +39,7 @@ const Navbar = () => {
                     ))
                 }
 
-                {localStorage.getItem("authenticated") === "true" ? (
+                {auth ? (
                         <li><button onClick={() => logOut()}>SAIR</button></li>
                     ) : (
                         <Link to="/login">LOGAR</Link>
