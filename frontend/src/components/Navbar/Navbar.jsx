@@ -44,6 +44,7 @@ const Navbar = () => {
                         <Link to="/login">LOGAR</Link>
                     )
                 }
+                <Link to="categories">TESTE</Link>
             </ul>
         </nav>
     )
