@@ -1,15 +1,16 @@
 // Modules
 import { Outlet, Navigate } from "react-router-dom"
-import { useContext } from "react"
-
-// Context
-import { AuthContext } from "../context/AuthContext"
 
 const PrivateRoutes = () => {
-    const { auth } = useContext(AuthContext)
+    let authenticated
+    if (localStorage.getItem("authenticated")){
+        authenticated = true
+    } else {
+        authenticated = false
+    }
 
     return (
-        auth ? <Outlet /> : <Navigate to="/login" />
+        authenticated ? <Outlet /> : <Navigate to="/login" />
     )
 }
 
