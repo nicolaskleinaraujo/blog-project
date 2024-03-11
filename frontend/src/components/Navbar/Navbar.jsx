@@ -3,11 +3,8 @@ import styles from "./Navbar.module.css"
 
 // Modules
 import dbFetch from "../../axios/config"
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-
-// Context
-import { AuthContext } from "../../context/AuthContext"
 
 const Navbar = () => {
     const [categories, setCategories] = useState()
@@ -16,11 +13,10 @@ const Navbar = () => {
         setCategories(res.data)
     }
 
-    const { auth, setAuth } = useContext(AuthContext)
     const logOut = async() => {
         if(confirm("Deslogar do sistema?")) {
             localStorage.removeItem("token")
-            setAuth(false)
+            localStorage.setItem("authenticated", false)
         }
     }
 
@@ -38,7 +34,7 @@ const Navbar = () => {
                     ))
                 }
 
-                {auth ? (
+                {localStorage.getItem("authenticated") === "true" ? (
                         <li><button onClick={() => logOut()}>SAIR</button></li>
                     ) : (
                         <Link to="/login">LOGAR</Link>
