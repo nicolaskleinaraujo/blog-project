@@ -1,16 +1,11 @@
 // Modules
 import dbFetch from "./axios/config"
-import { useEffect, useContext } from "react"
-
-// Auth Context
-import { AuthContext } from "./context/AuthContext"
+import { useEffect } from "react"
 
 // Routes
 import Router from "./utils/Router"
 
 function App() {
-  const { setAuth } = useContext(AuthContext)
-
   const tryAuth = async() => {
     const res = await dbFetch.get("/try-authenticate", {
       headers: {
@@ -19,9 +14,9 @@ function App() {
     })
 
     if (res.status === 200) {
-      setAuth(true)
+      localStorage.setItem("authenticated", true)
     } else {
-      setAuth(false)
+      localStorage.setItem("authenticated", false)
     }
   }
 
