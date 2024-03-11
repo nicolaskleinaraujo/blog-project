@@ -2,10 +2,11 @@
 import { Outlet, Navigate } from "react-router-dom"
 
 const PrivateRoutes = () => {
+    var authenticated
     if (localStorage.getItem("authenticated") === "true"){
-        var authenticated = true
+        authenticated = true
     } else {
-        var authenticated = false
+        authenticated = false
     }
 
     return (
