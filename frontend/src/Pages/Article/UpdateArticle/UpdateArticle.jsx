@@ -14,7 +14,12 @@ const UpdateArticle = () => {
     const [body, setBody] = useState("")
     const [articleCategory, setArticleCategory] = useState("")
     const getArticle = async() => {
-        const res = await dbFetch.get(`/articles/${id}`)
+        const res = await dbFetch.get(`/articles/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        
         setTitle(res.data.article.title)
         setBody(res.data.article.body)
         setArticleCategory(res.data.article.category.title)
