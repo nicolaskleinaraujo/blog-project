@@ -4,7 +4,7 @@ import styles from "./Navbar.module.css"
 // Modules
 import dbFetch from "../../axios/config"
 import { useEffect, useState, useContext } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 // Context
 import { AuthContext } from "../../context/AuthContext"
@@ -14,6 +14,11 @@ const Navbar = () => {
     const getCategories = async() => {
         const res = await dbFetch.get("/admin/categories")
         setCategories(res.data)
+    }
+    
+    const navigate = useNavigate()
+    const handleChange = (e) => {
+        navigate(`/category/${e.target.value}`)
     }
 
     const { auth, setAuth } = useContext(AuthContext)
@@ -32,20 +37,21 @@ const Navbar = () => {
     return (
         <nav>
             <ul>
-                <Link to='/'>HOME---</Link>
-                {categories &&
-                    categories.map((category) => (
-                        <Link key={category.id} to={`/category/${category.slug}`}>{category.title}---</Link>
-                    ))
-                }
-
+                <Link to='/'>Home</Link>
+                <select onChange={handleChange}>
+                    {categories &&
+                        categories.map((category) => (
+                            <option key={category.id} value={category.slug}>{category.title}</option>
+                        ))
+                    }
+                </select>
+                
                 {auth ? (
-                        <li><button onClick={() => logOut()}>SAIR</button></li>
+                        <li><button onClick={() => logOut()}>Sair</button></li>
                     ) : (
-                        <Link to="/login">LOGAR</Link>
+                        <Link to="/login">Logar</Link>
                     )
                 }
-                <Link to="categories">TESTE</Link>
             </ul>
         </nav>
     )
