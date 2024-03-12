@@ -1,6 +1,13 @@
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+
 .nav li {
     display: inline;
-    margin: 0 .5em;
+    margin: 0 0.8em;
 }
 
 .nav a {
@@ -9,10 +16,13 @@
 }
 
 .nav select {
-    border: 0px solid transparent;
+    max-width: 7em;
     text-align: center;
+    border-radius: 2em;
 }
 
-.action {
-    float: right;
+.nav button {
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
 }
