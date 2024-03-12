@@ -16,7 +16,11 @@ const Articles = () => {
     const deleteArticle = async(id) => {
         if(confirm("Deletar Artigo?") === true){
             try {
-                await dbFetch.delete(`/articles/delete/${id}`)
+                await dbFetch.delete(`/articles/delete/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("token")}`
+                    }
+                })
             } catch (error) {
                 console.log(error)
             }
