@@ -19,7 +19,7 @@ const UpdateArticle = () => {
                 'Authorization': `Bearer ${localStorage.getItem("token")}`
             }
         })
-        
+
         setTitle(res.data.article.title)
         setBody(res.data.article.body)
         setArticleCategory(res.data.article.category.title)
@@ -38,6 +38,10 @@ const UpdateArticle = () => {
                 title,
                 body,
                 category: articleCategory,
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
             })
             navigate("/articles")
         } catch (err) {
