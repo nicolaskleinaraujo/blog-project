@@ -18,7 +18,7 @@ const Navbar = () => {
     
     const navigate = useNavigate()
     const handleChange = (e) => {
-        navigate(`/category/${e.target.value}`)
+        navigate(e.target.value)
     }
 
     const { auth, setAuth } = useContext(AuthContext)
@@ -40,13 +40,20 @@ const Navbar = () => {
                 <li className={styles.home_link}><Link to='/'>Home</Link></li>
 
                 <li>
-                    <select defaultValue={location.href} onChange={handleChange}>
+                    <select name="categories" defaultValue={location.href} onChange={handleChange}>
                         <option value={location.href} disabled hidden>Categorias</option>
                         {categories &&
                             categories.map((category) => (
-                                <option key={category.id} value={category.slug}>{category.title}</option>
+                                <option key={category.id} value={`/category/${category.slug}`}>{category.title}</option>
                             ))
                         }
+                    </select>
+                </li>
+
+                <li>
+                    <select name="admin" defaultValue={location.href} onChange={handleChange}>
+                        <option value={location.href} disabled hidden>Admin</option>
+                        <option value="/new-article">Novo Artigo</option>
                     </select>
                 </li>
                 
