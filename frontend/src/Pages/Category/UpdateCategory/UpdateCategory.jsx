@@ -13,7 +13,11 @@ const UpdateCategory = () => {
     const [title, setTitle] = useState("")
 
     const getCategory = async(id) => {
-        const res = await dbFetch.get(`/categories/${id}`)
+        const res = await dbFetch.get(`/categories/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            }
+        })
         setTitle(res.data.category.title)
     }
 
