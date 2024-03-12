@@ -6,9 +6,24 @@
 
 .home div a {
     background-color: lightgreen;
+    border-radius: .5em;
 }
 
 .home a {
     color: black;
     text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu:first-child {
+    justify-content: flex-start;
+}
+
+.menu:last-child {
+    justify-content: flex-end;
 }
