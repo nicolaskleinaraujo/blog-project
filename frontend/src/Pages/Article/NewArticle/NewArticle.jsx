@@ -30,6 +30,10 @@ const NewArticle = () => {
                 title,
                 body,
                 category: articleCategory
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                } 
             })
             navigate("/articles")
         } catch (error) {
