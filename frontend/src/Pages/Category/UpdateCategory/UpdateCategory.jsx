@@ -24,7 +24,11 @@ const UpdateCategory = () => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
-            await dbFetch.post(`/categories/update/${id}`, { title })
+            await dbFetch.post(`/categories/update/${id}`, { title }, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            })
             navigate("/categories")
         } catch (error) {
             console.log(error)
