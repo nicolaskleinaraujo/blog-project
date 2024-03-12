@@ -23,7 +23,11 @@ const Category = () => {
     const deleteCategory = async(id) => {
         if (confirm("Deletar categoria?") === true) {
             try {
-                await dbFetch.delete(`/categories/delete/${id}`)
+                await dbFetch.delete(`/categories/delete/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("token")}`
+                    }
+                })
                 setLoading(true)
             } catch (error) {
                 console.log(error)
