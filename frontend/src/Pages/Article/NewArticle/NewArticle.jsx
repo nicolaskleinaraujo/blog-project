@@ -19,14 +19,14 @@ const NewArticle = () => {
         setCategories(res.data)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         setTitle("")
         setBody("")
         setArticleCategory("placeholder")
 
         try {
-            dbFetch.post("/articles/save", {
+            await dbFetch.post("/articles/save", {
                 title,
                 body,
                 category: articleCategory
