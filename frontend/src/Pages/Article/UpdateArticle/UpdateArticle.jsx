@@ -13,6 +13,7 @@ const UpdateArticle = () => {
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
     const [articleCategory, setArticleCategory] = useState("")
+
     const getArticle = async() => {
         const res = await dbFetch.get(`/articles/${id}`, {
             headers: {
@@ -57,6 +58,7 @@ const UpdateArticle = () => {
     return (
         <div>
             <h1>Atualizar Artigo</h1>
+            
             <form onSubmit={handleSubmit}>
                 <label>
                     <p>Titulo: </p>
@@ -81,8 +83,7 @@ const UpdateArticle = () => {
                     ></textarea>
                 </label>
 
-                <select name="category" defaultValue={articleCategory.id} onChange={(e) => setArticleCategory(e.target.value)}>
-                    <option value={articleCategory.id} disabled hidden>{articleCategory}</option>
+                <select name="category" defaultValue={articleCategory} onChange={(e) => setArticleCategory(e.target.value)}>
                     {categories &&
                         categories.map((category) => (
                             <option key={category.id} value={category.id}>{category.title}</option>
