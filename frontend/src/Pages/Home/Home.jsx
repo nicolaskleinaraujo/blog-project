@@ -27,14 +27,20 @@ const Home = () => {
   }, [location])
 
   return (
-    <div>
-      <h1>Home</h1>
+    <div className={styles.home}>
+      <div>
+        <h1>Blog de Tecnologia</h1>
+        <p>Bem-vindo ao meu blog. Nele você pode criar uma conta para criar e excluir artigos</p>
+        <Link to="/register">Criar Conta</Link>
+      </div>
+      
+
       {articles &&
         articles.map((article) => (
           <div key={article.id}>
-            {article.title} <br />
-            <Link to={`/article/${article.slug}`}>LER MAIS</Link>
+            <h2>{article.title}</h2>
             <hr />
+            <Link to={`/article/${article.slug}`}>LER ARTIGO</Link>
           </div>
         ))
       }

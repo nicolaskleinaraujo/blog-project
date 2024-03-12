@@ -1,0 +1,14 @@
+.home div {
+    margin: 1em;
+    padding: .5em;
+    background-color: lightgray;
+}
+
+.home div a {
+    background-color: lightgreen;
+}
+
+.home a {
+    color: black;
+    text-decoration: none;
+}
