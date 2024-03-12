@@ -35,21 +35,25 @@ const Navbar = () => {
     }, [auth])
 
     return (
-        <nav>
+        <nav className={styles.nav}>
             <ul>
-                <Link to='/'>Home</Link>
-                <select onChange={handleChange}>
-                    {categories &&
-                        categories.map((category) => (
-                            <option key={category.id} value={category.slug}>{category.title}</option>
-                        ))
-                    }
-                </select>
+                <li className={styles.home_link}><Link to='/'>Home</Link></li>
+
+                <li>
+                    <select defaultValue={location.href} onChange={handleChange}>
+                        <option value={location.href} disabled hidden>Categorias</option>
+                        {categories &&
+                            categories.map((category) => (
+                                <option key={category.id} value={category.slug}>{category.title}</option>
+                            ))
+                        }
+                    </select>
+                </li>
                 
                 {auth ? (
-                        <li><button onClick={() => logOut()}>Sair</button></li>
+                        <li className={styles.action}><button onClick={() => logOut()}>Sair</button></li>
                     ) : (
-                        <Link to="/login">Logar</Link>
+                        <li className={styles.action}><Link to="/login">Logar</Link></li>
                     )
                 }
             </ul>

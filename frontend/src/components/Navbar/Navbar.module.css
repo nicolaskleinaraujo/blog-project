@@ -1,0 +1,18 @@
+.nav li {
+    display: inline;
+    margin: 0 .5em;
+}
+
+.nav a {
+    color: black;
+    text-decoration: none;
+}
+
+.nav select {
+    border: 0px solid transparent;
+    text-align: center;
+}
+
+.action {
+    float: right;
+}
