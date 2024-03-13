@@ -39,7 +39,7 @@ const Navbar = () => {
 
     return (
         <nav className={styles.nav}>
-            <li><Link to='/'><img src="./blog-logo.svg" alt="Project Logo" /></Link></li>
+            <Link to='/'><img src="./blog-logo.svg" alt="Project Logo" /></Link>
 
             <li><button className={styles.menuBtn} onClick={() => showMenu()}>
                 { menu ? (<IoClose style={{color: "white"}} />) : (<IoMenu style={{color: "black"}} />) }
