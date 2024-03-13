@@ -16,6 +16,11 @@ const Navbar = () => {
         setCategories(res.data)
     }
 
+    const [menu, setMenu] = useState(false)
+    const showMenu = () => {
+        menu ? setMenu(false) : setMenu(true)
+    }
+
     const { auth, setAuth } = useContext(AuthContext)
     const logOut = async() => {
         if(confirm("Deslogar do sistema?")) {
@@ -33,7 +38,9 @@ const Navbar = () => {
         <nav className={styles.nav}>
             <li><Link to='/'>Home</Link></li>
 
-            <div className={styles.menu}>
+            <li><button className={styles.menuBtn} onClick={() => showMenu()}>X</button></li>
+
+            <div className={styles.menu} style={{display: menu ? "flex" : "none"}}>
                 <p>Navegar</p>
                 {categories &&
                     categories.map((category) => (
