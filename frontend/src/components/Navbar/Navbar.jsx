@@ -47,6 +47,7 @@ const Navbar = () => {
 
             <div className={styles.menu} style={{display: menu ? "flex" : "none"}}>
                 <p>Navegar</p>
+                <li><Link to="/">Home</Link></li>
                 {categories &&
                     categories.map((category) => (
                         <li key={category.id}><Link to={`/category/${category.slug}`}>{category.title}</Link></li>
