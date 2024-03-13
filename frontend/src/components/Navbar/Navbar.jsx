@@ -46,7 +46,7 @@ const Navbar = () => {
             </button></li>
 
             <div className={styles.menu} style={{display: menu ? "flex" : "none"}}>
-                <p>Navegar</p>
+                <p>NAVEGAR</p>
                 <li><Link to="/">Home</Link></li>
                 {categories &&
                     categories.map((category) => (
@@ -54,7 +54,7 @@ const Navbar = () => {
                     ))
                 }
 
-                <p>Admin</p>
+                <p>ADMIN</p>
                 <li><Link to="/new-article">Novo Artigo</Link></li>
                 <li><Link to="/add-category">Nova Categoria</Link></li>
                 <li><Link to="/articles">Artigos</Link></li>
@@ -63,7 +63,10 @@ const Navbar = () => {
                 {auth ? (
                     <p><li><button onClick={() => logOut()}>Sair</button></li></p>
                 ) : (
-                    <p><li><Link to="/login">Logar</Link></li></p>
+                    <p>
+                        <li><Link to="/register">Criar</Link></li>
+                        <li><Link to="/login">Logar</Link></li>
+                    </p>
                 )
                 }
             </div>
