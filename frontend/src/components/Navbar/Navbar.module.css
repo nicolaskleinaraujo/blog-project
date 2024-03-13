@@ -6,6 +6,11 @@
     margin-top: 1em;
 }
 
+.nav img {
+    margin-left: 1em;
+    width: 1.8em;
+}
+
 .menuBtn {
     position: absolute;
     z-index: 100;
