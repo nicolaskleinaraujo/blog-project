@@ -42,7 +42,7 @@ const Navbar = () => {
             <Link to='/'><img src="./blog-logo.svg" alt="Project Logo" /></Link>
 
             <li><button className={styles.menuBtn} onClick={() => showMenu()}>
-                { menu ? (<IoClose style={{color: "white"}} />) : (<IoMenu style={{color: "black"}} />) }
+                { menu ? <IoClose style={{color: "white"}} /> : <IoMenu style={{color: "black"}} /> }
             </button></li>
 
             <div className={styles.menu} style={{display: menu ? "flex" : "none"}}>
