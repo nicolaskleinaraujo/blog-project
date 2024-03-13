@@ -4,7 +4,7 @@ import styles from "./Navbar.module.css"
 // Modules
 import dbFetch from "../../axios/config"
 import { useEffect, useState, useContext } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 // Context
 import { AuthContext } from "../../context/AuthContext"
@@ -14,11 +14,6 @@ const Navbar = () => {
     const getCategories = async() => {
         const res = await dbFetch.get("/admin/categories")
         setCategories(res.data)
-    }
-    
-    const navigate = useNavigate()
-    const handleChange = (e) => {
-        navigate(e.target.value)
     }
 
     const { auth, setAuth } = useContext(AuthContext)
@@ -36,34 +31,27 @@ const Navbar = () => {
 
     return (
         <nav className={styles.nav}>
-            <ul>
-                <li className={styles.home_link}><Link to='/'>Home</Link></li>
+            <li><Link to='/'>Home</Link></li>
 
-                <li>
-                    <select name="categories" defaultValue={location.href} onChange={handleChange}>
-                        <option value={location.href} disabled hidden>Categorias</option>
-                        {categories &&
-                            categories.map((category) => (
-                                <option key={category.id} value={`/category/${category.slug}`}>{category.title}</option>
-                            ))
-                        }
-                    </select>
-                </li>
-
-                <li>
-                    <select name="admin" defaultValue={location.href} onChange={handleChange}>
-                        <option value={location.href} disabled hidden>Admin</option>
-                        <option value="/new-article">Novo Artigo</option>
-                    </select>
-                </li>
-                
-                {auth ? (
-                        <li className={styles.action}><button onClick={() => logOut()}>Sair</button></li>
-                    ) : (
-                        <li className={styles.action}><Link to="/login">Logar</Link></li>
-                    )
+            <div className={styles.menu}>
+                {categories &&
+                    categories.map((category) => (
+                        <li key={category.id}><Link to={`/category/${category.slug}`}>{category.title}</Link></li>
+                    ))
                 }
-            </ul>
+
+                <li><Link to="/new-article">Novo Artigo</Link></li>
+                <li><Link to="/add-category">Nova Categoria</Link></li>
+                <li><Link to="/articles">Artigos</Link></li>
+                <li><Link to="/categories">Categorias</Link></li>
+
+                {auth ? (
+                    <li><button onClick={() => logOut()}>Sair</button></li>
+                ) : (
+                    <li><Link to="/login">Logar</Link></li>
+                )
+                }
+            </div>
         </nav>
     )
 }
