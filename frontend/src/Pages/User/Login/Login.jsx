@@ -35,27 +35,29 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className={styles.login}>
             <h1>Login</h1>
 
             <form onSubmit={handleSubmit}>
+                <p>Faça login para compartilhar seus conhecimentos</p>
+
                 <label>
-                    <span>Email: </span>
                     <input 
                         type="email" 
                         name="email" 
                         id="email" 
+                        placeholder="Digite seu email" 
                         onChange={(e) => setEmail(e.target.value)} 
                         value={email} 
                     />
                 </label>
 
                 <label>
-                    <span>Senha: </span>
                     <input 
                         type="password" 
                         name="password" 
                         id="password" 
+                        placeholder="Digite sua senha" 
                         onChange={(e) => setPassword(e.target.value)} 
                         value={password} 
                     />
