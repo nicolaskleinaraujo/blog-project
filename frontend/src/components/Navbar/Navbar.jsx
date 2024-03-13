@@ -34,21 +34,23 @@ const Navbar = () => {
             <li><Link to='/'>Home</Link></li>
 
             <div className={styles.menu}>
+                <p>Navegar</p>
                 {categories &&
                     categories.map((category) => (
                         <li key={category.id}><Link to={`/category/${category.slug}`}>{category.title}</Link></li>
                     ))
                 }
 
+                <p>Admin</p>
                 <li><Link to="/new-article">Novo Artigo</Link></li>
                 <li><Link to="/add-category">Nova Categoria</Link></li>
                 <li><Link to="/articles">Artigos</Link></li>
                 <li><Link to="/categories">Categorias</Link></li>
 
                 {auth ? (
-                    <li><button onClick={() => logOut()}>Sair</button></li>
+                    <p><li><button onClick={() => logOut()}>Sair</button></li></p>
                 ) : (
-                    <li><Link to="/login">Logar</Link></li>
+                    <p><li><Link to="/login">Logar</Link></li></p>
                 )
                 }
             </div>

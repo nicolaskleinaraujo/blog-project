@@ -2,27 +2,46 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    list-style-type: none;
     margin-top: 1em;
 }
 
-.nav li {
-    display: inline;
-    margin: 0 0.8em;
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 80%;
+    height: 100vh;
+    padding: 2em;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    background-color: black;
+    transition: all .2s ease-in;
 }
 
-.nav a {
-    color: black;
-    text-decoration: none;
+.menu p {
+    font-size: 1.1em;
+    margin: 1.3em 0 0em;
+    padding: 0.3em;
+    text-transform: uppercase;
+    color: white;
 }
 
-.nav select {
-    max-width: 7em;
-    text-align: center;
-    border-radius: 2em;
+.menu li {
+    margin: 0.3em 0;
+}
+
+.menu a {
+    color: white;
+    text-decoration: underline;
 }
 
 .nav button {
     border: none;
     background-color: transparent;
+    color: white;
     text-decoration: underline;
 }
