@@ -42,11 +42,7 @@ const Navbar = () => {
             <li><Link to='/'>Home</Link></li>
 
             <li><button className={styles.menuBtn} onClick={() => showMenu()}>
-                {menu ? (
-                    <IoClose style={{color: "white"}} />
-                ): (
-                    <IoMenu style={{color: "black"}} />
-                )}
+                { menu ? (<IoClose style={{color: "white"}} />) : (<IoMenu style={{color: "black"}} />) }
             </button></li>
 
             <div className={styles.menu} style={{display: menu ? "flex" : "none"}}>
