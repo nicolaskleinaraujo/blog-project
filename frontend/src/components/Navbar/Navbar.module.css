@@ -11,6 +11,11 @@
     width: 1.8em;
 }
 
+.nav button {
+    border: none;
+    background-color: transparent;
+}
+
 .menuBtn {
     position: absolute;
     z-index: 100;
@@ -53,9 +58,6 @@
     text-decoration: underline;
 }
 
-.nav button {
-    border: none;
-    background-color: transparent;
-    color: black;
-    text-decoration: underline;
+.menu button {
+    color: white;
 }
