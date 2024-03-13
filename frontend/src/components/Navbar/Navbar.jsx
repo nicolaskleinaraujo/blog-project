@@ -38,7 +38,8 @@ const Navbar = () => {
         <nav className={styles.nav}>
             <li><Link to='/'>Home</Link></li>
 
-            <li><button className={styles.menuBtn} onClick={() => showMenu()}>X</button></li>
+            <li><button className={styles.menuBtn} onClick={() => showMenu()}>
+            </button></li>
 
             <div className={styles.menu} style={{display: menu ? "flex" : "none"}}>
                 <p>Navegar</p>
