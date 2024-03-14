@@ -3,11 +3,15 @@ import styles from "./Home.module.css"
 
 // Modules
 import dbFetch from "../../axios/config"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Link, useLocation, useParams } from "react-router-dom"
+
+// Context
+import { AuthContext } from "../../context/AuthContext"
 
 const Home = () => {
   const location = useLocation()
+  const { auth } = useContext(AuthContext)
 
   let { num } = useParams()
   if (isNaN(num) || null){
@@ -28,12 +32,13 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <div>
-        <h1>Blog de Tecnologia</h1>
-        <p>Bem-vindo ao meu blog. Nele você pode criar uma conta para criar e excluir artigos</p>
-        <Link to="/register">Criar Conta</Link>
-      </div>
-      
+      {!auth &&
+        <div>
+          <h1>Blog de Tecnologia</h1>
+          <p>Bem-vindo ao meu blog. Nele você pode criar uma conta para ler, criar e excluir artigos</p>
+          <Link to="/register">Criar Conta</Link>
+        </div>
+      }
 
       {articles &&
         articles.map((article) => (
