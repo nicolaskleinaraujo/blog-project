@@ -10,14 +10,18 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 const Articles = () => {
+    const [loading, setLoading] = useState(false)
+
     const [articles, setArticles] = useState([])
     const getArticles = async() => {
         const res = await dbFetch.get("/admin/articles")
         setArticles(res.data)
+        setLoading(false)
     }
 
     const deleteArticle = async(id) => {
         if(confirm("Deletar Artigo?") === true){
+            setLoading(true)
             try {
                 await dbFetch.delete(`/articles/delete/${id}`, {
                     headers: {
@@ -32,7 +36,7 @@ const Articles = () => {
 
     useEffect(() => {
         getArticles()
-    }, [])
+    }, [loading])
 
     return (
         <div className={styles.articles}>
