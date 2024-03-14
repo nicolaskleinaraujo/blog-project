@@ -16,7 +16,7 @@ const Articles = () => {
     const getArticles = async() => {
         const res = await dbFetch.get("/admin/articles")
         setArticles(res.data)
-        setLoading(false)
+        if (loading === true) {setLoading(false)}
     }
 
     const deleteArticle = async(id) => {
