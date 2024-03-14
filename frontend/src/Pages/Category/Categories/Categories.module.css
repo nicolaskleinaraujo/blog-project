@@ -1,7 +1,13 @@
+.categories {
+    background-color: #1c93d3;
+    padding: 1em;
+}
+
 .categories div {
     margin: 1em;
     padding: .5em;
-    background-color: lightgray;
+    background-color: white;
+    border-radius: 1em;
 }
 
 .categories div h2 {
