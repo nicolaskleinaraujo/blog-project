@@ -26,16 +26,17 @@ const Category = () => {
     }
 
     return (
-        <div>
-            <h1>Criar nova categoria</h1>
+        <div className={styles.add_category}>
             <form onSubmit={handleSubmit}>
+                <h1>Criar nova categoria</h1>
+
                 <label>
-                    <p>Titulo: </p>
                     <input 
                         type="text" 
                         name="title" 
-                        id="title"
-                        onChange={(e) => setTitle(e.target.value)}
+                        id="title" 
+                        placeholder="Digite o novo titulo" 
+                        onChange={(e) => setTitle(e.target.value)} 
                         value={title}
                     />
                 </label>
