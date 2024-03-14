@@ -50,9 +50,9 @@ const Home = () => {
         ))
       }
 
-      <menu className={styles.menu}>
-        {num > 1 && <Link to={`/${num - 1}`}>⬅ Página Anterior</Link>}
-        {next && <Link to={`/${1 + parseInt(num)}`}>Proxima Página ➡</Link>}
+      <menu>
+        {num > 1 && <Link className={styles.prev_page} to={`/${num - 1}`}>⬅ Página Anterior</Link>}
+        {next && <Link className={styles.next_page} to={`/${1 + parseInt(num)}`}>Proxima Página ➡</Link>}
       </menu>
     </div>
   )

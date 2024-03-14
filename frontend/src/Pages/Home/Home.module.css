@@ -19,16 +19,17 @@
     text-decoration: none;
 }
 
-.menu {
+.home menu {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: .5em 0 1.5em 0;
+    text-decoration: underline;
 }
 
-.menu:first-child {
-    justify-content: flex-start;
+.prev_page {
+    margin-left: .5em;
+    align-items: flex-start;
 }
 
-.menu:last-child {
-    justify-content: flex-end;
+.next_page {
+    margin: 0 .5em 0 auto;
 }
