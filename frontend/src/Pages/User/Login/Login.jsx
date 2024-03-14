@@ -4,7 +4,7 @@ import styles from "./Login.module.css"
 // Modules
 import dbFetch from "../../../axios/config"
 import { useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 // Context
 import { AuthContext } from "../../../context/AuthContext"
@@ -36,9 +36,8 @@ const Login = () => {
 
     return (
         <div className={styles.login}>
-            <h1>Login</h1>
-
             <form onSubmit={handleSubmit}>
+                <h1>Login</h1>
                 <p>Faça login para compartilhar seus conhecimentos</p>
 
                 <label>
@@ -64,6 +63,8 @@ const Login = () => {
                 </label>
 
                 <input type="submit" value="Login" />
+
+                <p>Não possui conta? <Link to="/register">Criar</Link></p>
             </form>
         </div>
     )
