@@ -46,30 +46,28 @@ const NewArticle = () => {
     }, [])
 
     return (
-        <div>
-            <h1>NewArticle</h1>
+        <div className={styles.new_article}>
             <form onSubmit={handleSubmit}>
-                <label>
-                    <p>Titulo: </p>
-                    <input 
-                        type="text" 
-                        name="title" 
-                        id="title" 
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title}
-                    />
-                </label>
+                <h1>Criar Artigo</h1>
 
-                <label>
-                    <p>Texto: </p>
-                    <input 
-                        type="text" 
-                        name="body" 
-                        id="body" 
-                        onChange={(e) => setBody(e.target.value)}
-                        value={body}
-                    />
-                </label>
+                <input 
+                    type="text" 
+                    name="title" 
+                    id="title" 
+                    placeholder="Digite o seu titulo"
+                    onChange={(e) => setTitle(e.target.value)}
+                    value={title}
+                />
+
+                <textarea 
+                    name="body" 
+                    id="body" 
+                    cols="30" 
+                    rows="10" 
+                    placeholder="Digite o seu texto" 
+                    onChange={(e) => setBody(e.target.value)}
+                    value={body}
+                ></textarea>
 
                 <select name="category" defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
                     <option value="placeholder" disabled hidden>--- SELECIONE UMA CATEGORIA ---</option>
