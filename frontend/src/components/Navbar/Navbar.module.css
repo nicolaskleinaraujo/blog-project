@@ -3,7 +3,8 @@
     justify-content: space-between;
     align-items: center;
     list-style-type: none;
-    margin-top: 1em;
+    padding: .5em 0 .5em 0;
+    background-color: #0E0452;
 }
 
 .nav img {
@@ -17,6 +18,7 @@
 }
 
 .menuBtn {
+    color: white;
     position: absolute;
     z-index: 100;
     top: 0.8em;
