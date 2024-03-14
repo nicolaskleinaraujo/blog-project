@@ -1,0 +1,21 @@
+.categories div {
+    margin: 1em;
+    padding: .5em;
+    background-color: lightgray;
+}
+
+.categories div h2 {
+    margin-bottom: .3em;
+}
+
+.categories div a,
+.categories div button {
+    color: black;
+    margin-right: .7em;
+    vertical-align: middle;
+}
+
+.categories div button {
+    border: none;
+    background-color: transparent;
+}

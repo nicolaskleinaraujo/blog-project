@@ -40,16 +40,16 @@ const Category = () => {
     }, [loading])
 
     return (
-        <div>
+        <div className={styles.categories}>
             <h1>Categorias</h1>
+
             {categories &&
                 categories.map((category) => (
-                   <li key={category.id}>
-                        {category.title} <br />
-                        <Link to={`/update-category/${category.id}`}> EDITAR!</Link> <br />
-                        <button onClick={() => deleteCategory(category.id)}>DELETAR!</button>
-                        <hr />
-                   </li>
+                   <div key={category.id}>
+                        <h2>{category.title}</h2>
+                        <Link to={`/update-category/${category.id}`}>Editar</Link>
+                        <button onClick={() => deleteCategory(category.id)}>Deletar</button>
+                   </div>
                 ))
             }
         </div>
