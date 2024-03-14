@@ -56,7 +56,7 @@ const Register = () => {
 
                 <input type="submit" value="Criar" />
 
-                <p>Já possui conta? <Link to="/register">Logar</Link></p>
+                <p>Já possui conta? <Link to="/login">Logar</Link></p>
             </form>
         </div>
     )
