@@ -20,7 +20,7 @@ const ReadArticle = () => {
     }, [])
 
     return (
-        <div>
+        <div className={styles.read_article}>
             <h1>{article.title}</h1>
             <p>{article.body}</p>
         </div>
