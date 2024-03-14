@@ -1,6 +1,9 @@
 // CSS
 import styles from "./Categories.module.css"
 
+// Icons
+import { FaEdit, FaTrash } from "react-icons/fa";
+
 // Modules
 import dbFetch from "../../../axios/config"
 import { useEffect, useState } from "react"
@@ -47,8 +50,8 @@ const Category = () => {
                 categories.map((category) => (
                    <div key={category.id}>
                         <h2>{category.title}</h2>
-                        <Link to={`/update-category/${category.id}`}>Editar</Link>
-                        <button onClick={() => deleteCategory(category.id)}>Deletar</button>
+                        <Link to={`/update-category/${category.id}`}><FaEdit /></Link>
+                        <button onClick={() => deleteCategory(category.id)}><FaTrash /></button>
                    </div>
                 ))
             }
