@@ -1,7 +1,13 @@
+.articles {
+    background-color: #1c93d3;
+    padding: 1em;
+}
+
 .articles div {
     margin: 1em;
     padding: .5em;
-    background-color: lightgray;
+    background-color: white;
+    border-radius: 1em;
 }
 
 .articles div h2 {
