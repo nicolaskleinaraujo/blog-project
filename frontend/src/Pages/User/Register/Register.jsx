@@ -4,7 +4,7 @@ import styles from "./Register.module.css"
 // Modules
 import dbFetch from "../../../axios/config"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 const Register = () => {
     const navigate = useNavigate()
@@ -28,9 +28,8 @@ const Register = () => {
 
     return (
         <div className={styles.register}>
-            <h1>Criar Conta</h1>
-
             <form onSubmit={handleSubmit}>
+                <h1>Criar Conta</h1>
                 <p>Crie sua conta para compartilhar seus conhecimentos</p>
 
                 <label>
@@ -56,6 +55,8 @@ const Register = () => {
                 </label>
 
                 <input type="submit" value="Criar" />
+
+                <p>Já possui conta? <Link to="/register">Logar</Link></p>
             </form>
         </div>
     )
