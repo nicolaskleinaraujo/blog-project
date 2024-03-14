@@ -21,23 +21,26 @@ const NewArticle = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        setTitle("")
-        setBody("")
-        setArticleCategory("placeholder")
 
-        try {
-            await dbFetch.post("/articles/save", {
-                title,
-                body,
-                category: articleCategory
-            }, {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                } 
-            })
-            navigate("/articles")
-        } catch (error) {
-            console.log(error)
+        if(articleCategory != 0) {
+            try {
+                await dbFetch.post("/articles/save", {
+                    title,
+                    body,
+                    category: articleCategory
+                }, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("token")}`
+                    } 
+                })
+                navigate("/articles")
+            } catch (error) {
+                console.log(error)
+            }
+
+            setTitle("")
+            setBody("")
+            setArticleCategory(0)
         }
     }
 
@@ -47,6 +50,7 @@ const NewArticle = () => {
 
     return (
         <div className={styles.new_article}>
+            <button onClick={() => console.log(articleCategory)}></button>
             <form onSubmit={handleSubmit}>
                 <h1>Criar Artigo</h1>
 
@@ -70,7 +74,7 @@ const NewArticle = () => {
                 ></textarea>
 
                 <select name="category" defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
-                    <option value="placeholder" disabled hidden>--- SELECIONE UMA CATEGORIA ---</option>
+                    <option value="placeholder" hidden>--- SELECIONE UMA CATEGORIA ---</option>
                     {categories && 
                         categories.map((category) => (
                             <option key={category.id} value={category.id}>{category.title}</option>
