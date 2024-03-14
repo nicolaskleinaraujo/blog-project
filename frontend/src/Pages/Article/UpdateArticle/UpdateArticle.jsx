@@ -34,19 +34,22 @@ const UpdateArticle = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        try {
-            await dbFetch.post(`/articles/update/${id}`, {
-                title,
-                body,
-                category: articleCategory,
-            }, {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            navigate("/articles")
-        } catch (err) {
-            console.log(err)
+
+        if(!isNaN(articleCategory)) {
+            try {
+                await dbFetch.post(`/articles/update/${id}`, {
+                    title,
+                    body,
+                    category: articleCategory,
+                }, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("token")}`
+                    }
+                })
+                navigate("/articles")
+            } catch (err) {
+                console.log(err)
+            }
         }
     }
 
@@ -77,7 +80,8 @@ const UpdateArticle = () => {
                     value={body}
                 ></textarea>
 
-                <select name="category" defaultValue={articleCategory} onChange={(e) => setArticleCategory(e.target.value)}>
+                <select name="category" defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
+                    <option value="placeholder" hidden>--- ESCOLHA UMA CATEGORIA ---</option>
                     {categories &&
                         categories.map((category) => (
                             <option key={category.id} value={category.id}>{category.title}</option>
