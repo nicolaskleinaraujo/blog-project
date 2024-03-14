@@ -50,7 +50,6 @@ const NewArticle = () => {
 
     return (
         <div className={styles.new_article}>
-            <button onClick={() => console.log(articleCategory)}></button>
             <form onSubmit={handleSubmit}>
                 <h1>Criar Artigo</h1>
 
