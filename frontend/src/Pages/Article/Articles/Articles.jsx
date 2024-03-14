@@ -1,6 +1,9 @@
 // CSS
 import styles from "./Articles.module.css"
 
+// Icons
+import { FaEdit, FaTrash } from "react-icons/fa";
+
 // Modules
 import dbFetch from "../../../axios/config"
 import { useState, useEffect } from "react"
@@ -39,8 +42,8 @@ const Articles = () => {
                 articles.map((article) => (
                     <div key={article.id}>
                         <h2>{article.title}</h2>
-                        <Link to={`/update-article/${article.id}`}>Editar</Link>
-                        <button onClick={() => deleteArticle(article.id)}>Deletar</button>
+                        <Link to={`/update-article/${article.id}`}><FaEdit /></Link>
+                        <button onClick={() => deleteArticle(article.id)}><FaTrash /></button>
                     </div>
                 ))
             }
