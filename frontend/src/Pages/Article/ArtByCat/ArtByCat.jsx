@@ -29,8 +29,8 @@ const ArtByCat = () => {
                 articles.map((article) => (
                     <div key={article.id}>
                         <h2>{article.title}</h2>
-                        <Link to={`/article/${article.slug}`}>LER MAIS</Link>
                         <hr />
+                        <Link to={`/article/${article.slug}`}>Ler Artigo</Link>
                     </div>
                 ))
             }

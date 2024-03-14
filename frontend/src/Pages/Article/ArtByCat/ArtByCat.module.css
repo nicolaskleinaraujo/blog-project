@@ -1,12 +1,19 @@
+.category {
+    background-color: #1c93d3;
+    padding: 1em;
+}
+
 .category div {
     margin: 1em;
     padding: .5em;
-    background-color: lightgray;
+    background-color: white;
+    border-radius: 1em;
 }
 
 .category div a {
-    background-color: lightgreen;
+    background-color: #7FCCF2;
     border-radius: .5em;
+    padding: .1em;
 }
 
 .category a {
