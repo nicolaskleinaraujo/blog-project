@@ -3,13 +3,13 @@
     justify-content: center;
     align-items: center;
     height: 80vh;
-    background-color: black;
+    background-color: #1c93d3;
 }
 
 .register form {
     width: 80vw;
     margin: auto;
-    padding: 2em;
+    padding: 1em;
     border-radius: 1.5em;
     background-color: white;
 }
