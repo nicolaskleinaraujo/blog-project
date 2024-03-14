@@ -96,6 +96,7 @@ router.get("/category/:slug", async (req, res) => {
         slug,
       },
       include: { model: Article },
+      order: [[Article, "id", "DESC"]]
     })
     res.status(200).json(articles)
   } catch (error) {
