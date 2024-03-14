@@ -23,7 +23,7 @@ const ArtByCat = () => {
     }, [location])
 
     return (
-        <div className={styles.category}>
+        <div className={styles.art_by_cat}>
             <h1>{category.title}</h1>
             {articles &&
                 articles.map((article) => (

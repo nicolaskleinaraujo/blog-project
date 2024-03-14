@@ -1,22 +1,26 @@
-.category {
+.art_by_cat {
     background-color: #1c93d3;
     padding: 1em;
 }
 
-.category div {
+.art_by_cat div {
     margin: 1em;
     padding: .5em;
     background-color: white;
     border-radius: 1em;
 }
 
-.category div a {
+.art_by_cat div hr {
+    margin-bottom: .2em;
+}
+
+.art_by_cat div a {
     background-color: #7FCCF2;
     border-radius: .5em;
     padding: .1em;
 }
 
-.category a {
+.art_by_cat a {
     color: black;
     text-decoration: none;
 }
