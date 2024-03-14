@@ -1,0 +1,21 @@
+.articles div {
+    margin: 1em;
+    padding: .5em;
+    background-color: lightgray;
+}
+
+.articles div h2 {
+    margin-bottom: .2em;
+}
+
+.articles div a,
+.articles div button {
+    color: black;
+    margin-right: .6em;
+    text-decoration: underline;
+}
+
+.articles div button {
+    border: none;
+    background-color: transparent;
+}

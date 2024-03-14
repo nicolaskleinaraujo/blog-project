@@ -32,19 +32,16 @@ const Articles = () => {
     }, [])
 
     return (
-        <div>
+        <div className={styles.articles}>
             <h1>Artigos</h1>
+
             {articles &&
                 articles.map((article) => (
-                    <li key={article.id}>
-                        {article.id} ---
-                        {article.title} ---
-                        {article.slug} ---
-                        {article.categoryId === null ? "Categoria Excluida" : article.category.title} 
-                        <br />
-                        <Link to={`/update-article/${article.id}`}>EDITAR!</Link>
-                        <button onClick={() => deleteArticle(article.id)}>DELETAR!</button>
-                    </li>
+                    <div key={article.id}>
+                        <h2>{article.title}</h2>
+                        <Link to={`/update-article/${article.id}`}>Editar</Link>
+                        <button onClick={() => deleteArticle(article.id)}>Deletar</button>
+                    </div>
                 ))
             }
         </div>
