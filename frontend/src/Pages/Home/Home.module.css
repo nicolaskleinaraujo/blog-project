@@ -4,6 +4,11 @@
     background-color: lightgray;
 }
 
+.home div p {
+    text-align: center;
+    margin-bottom: .5em;
+}
+
 .home div a {
     background-color: lightgreen;
     border-radius: .5em;
