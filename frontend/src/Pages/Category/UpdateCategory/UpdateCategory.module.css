@@ -1,0 +1,37 @@
+.update_category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: black;
+}
+
+.update_category form {
+    width: 90vw;
+    margin: auto;
+    border-radius: 1.5em;
+    background-color: white;
+}
+
+.update_category form h1 {
+    color: black;
+}
+
+.update_category form input {
+    display: block;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 1em;
+    padding: .3em;
+    text-indent: 0.3em;
+    margin: 0.7em auto 1.2em auto;
+}
+
+.update_category form button {
+    display: block;
+    margin: auto auto 1.5em;
+    border: 1px solid black;
+    background-color: transparent;
+    padding: 0.3em;
+    border-radius: .7em;
+}

@@ -40,15 +40,16 @@ const UpdateCategory = () => {
     }, [])
 
     return (
-        <div>
-            <h1>Atualizar Categoria</h1>
+        <div className={styles.update_category}>
             <form onSubmit={handleSubmit}>
+                <h1>Atualizar Categoria</h1>
+                
                 <label>
-                    <p>Titulo: </p>
                     <input 
                         type="text" 
                         name="title" 
                         id="title" 
+                        placeholder="Digite o titulo" 
                         value={title} 
                         onChange={(e) => setTitle(e.target.value)}
                     />
