@@ -10,6 +10,7 @@
 .nav img {
     margin-left: 1.8em;
     width: 1.8em;
+    vertical-align: middle;
 }
 
 .nav button {
@@ -21,7 +22,7 @@
     color: white;
     position: absolute;
     z-index: 100;
-    top: 0.8em;
+    top: 0.4em;
     right: -0.1em;
     margin-right: 1.5em;
     font-size: 1.5em;
