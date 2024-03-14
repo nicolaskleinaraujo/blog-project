@@ -16,6 +16,10 @@
     margin-bottom: .5em;
 }
 
+.home div hr {
+    margin-bottom: .2em;
+}
+
 .home div a {
     background-color: #7FCCF2;
     border-radius: .5em;
