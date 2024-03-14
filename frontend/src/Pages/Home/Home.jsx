@@ -45,7 +45,7 @@ const Home = () => {
           <div key={article.id}>
             <h2>{article.title}</h2>
             <hr />
-            <Link to={`/article/${article.slug}`}>LER ARTIGO</Link>
+            <Link to={`/article/${article.slug}`}>Ler Artigo</Link>
           </div>
         ))
       }

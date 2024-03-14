@@ -1,7 +1,14 @@
+.home {
+    background-color: #1c93d3;
+    padding: 1em 0 .1em 0;
+}
+
 .home div {
-    margin: 1em;
+    margin: 0 1em 1em 1em;
+    margin-bottom: 1em;
     padding: .5em;
-    background-color: lightgray;
+    background-color: white;
+    border-radius: 1em;
 }
 
 .home div p {
@@ -10,8 +17,9 @@
 }
 
 .home div a {
-    background-color: lightgreen;
+    background-color: #7FCCF2;
     border-radius: .5em;
+    padding: .1em;
 }
 
 .home a {
