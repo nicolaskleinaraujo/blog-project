@@ -56,32 +56,26 @@ const UpdateArticle = () => {
     }, [])
 
     return (
-        <div>
-            <h1>Atualizar Artigo</h1>
-            
+        <div className={styles.update_article}>
             <form onSubmit={handleSubmit}>
-                <label>
-                    <p>Titulo: </p>
-                    <input 
-                        type="text" 
-                        name="title" 
-                        id="title" 
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title}
-                    />
-                </label>
+                <h1>Atualizar Artigo</h1>
 
-                <label>
-                    <p>Texto: </p>
-                    <textarea 
-                        name="body" 
-                        id="body" 
-                        cols="30" 
-                        rows="10" 
-                        onChange={(e) => setBody(e.target.value)} 
-                        value={body}
-                    ></textarea>
-                </label>
+                <input 
+                    type="text" 
+                    name="title" 
+                    id="title" 
+                    onChange={(e) => setTitle(e.target.value)}
+                    value={title}
+                />
+
+                <textarea 
+                    name="body" 
+                    id="body" 
+                    cols="30" 
+                    rows="10" 
+                    onChange={(e) => setBody(e.target.value)} 
+                    value={body}
+                ></textarea>
 
                 <select name="category" defaultValue={articleCategory} onChange={(e) => setArticleCategory(e.target.value)}>
                     {categories &&
@@ -91,7 +85,7 @@ const UpdateArticle = () => {
                     }
                 </select>
 
-                <input type="submit" value="Atualizar" />
+                <button type="submit">Atualizar</button>
             </form>
         </div>
     )
