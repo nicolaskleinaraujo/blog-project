@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     list-style-type: none;
-    padding: .5em 0 .5em 0;
+    padding: .5em 0;
     background-color: #0E0452;
 }
 
@@ -24,7 +24,7 @@
     z-index: 100;
     top: 0.4em;
     right: -0.1em;
-    margin-right: 1.5em;
+    margin-right: 2.2em;
     font-size: 1.5em;
 }
 
@@ -63,4 +63,20 @@
 
 .menu button {
     color: white;
+}
+
+@media screen and (min-width: 426px) {
+    .nav {
+        padding: 1em 0;
+    }
+
+    .nav img {
+        margin-left: 3.5em;
+        width: 2em;
+    }
+
+    .menuBtn {
+        top: .8em;
+        margin-right: 3.9em;
+    }
 }
