@@ -32,6 +32,31 @@
  - Website: Not Started
  - API: Not Started
 
+# How to execute the project
+ ### Prerequisites
+ - Node.js installed
+ - Git installed
+ ### Step by step
+ ```bash
+ # clone repository
+ git clone https://github.com/nicolaskleinaraujo/blog-project
+
+ # enter project folder
+ cd blog-project
+
+ # run the "frontend"
+ cd frontend
+ npm install
+ npm run dev
+
+ # run the "backend"
+ cd backend
+ npm install
+ npm start
+
+ # now you can access by this url: localhost:5173
+ ```
+
 # Author
  Nicolas Klein Faria de Araujo <br>
  https://nk-portfolio-react.netlify.app
