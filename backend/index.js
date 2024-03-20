@@ -22,7 +22,7 @@ connection
   .then(() => console.log("Connected to the database"))
   .catch((err) => console.log(err))
 
-// Controller Routes
+// Controller Routes 
 app.use("/", categoriesController)
 app.use("/", articlesController)
 app.use("/", usersController)
