@@ -12,7 +12,7 @@ const usersController = require("./users/UsersController")
 app.use(express.json())
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://nk-blog-project.netlify.app",
     credentials: true,
   })
 )
