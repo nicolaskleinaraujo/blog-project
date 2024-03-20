@@ -57,7 +57,7 @@ router.post("/authenticate", async (req, res) => {
         id: user.id,
         email: user.email,
       },
-      process.env.jwt_secret,
+      process.env.JWT_SECRET,
       { expiresIn: "48h" },
       (err, token) => {
         if (err) {
