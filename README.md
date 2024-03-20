@@ -2,7 +2,7 @@
  ![MIT License](https://img.shields.io/badge/license-MIT-blue)
 <br>
 
- ### Demo app: Not Started
+ ### Demo app: https://nk-blog-project.netlify.app
 # About
  This project is a blog that let users create, delete, update and read articles.
  For the web page I used React and the API was made using Node.js.
@@ -29,33 +29,8 @@
  - CSS
 
  ### Implantation
- - Website: Not Started
- - API: Not Started
-
-# How to execute the project
- ### Prerequisites
- - Node.js installed
- - Git installed
- ### Step by step
- ```bash
- # clone repository
- git clone https://github.com/nicolaskleinaraujo/blog-project
-
- # enter project folder
- cd blog-project
-
- # run the "frontend"
- cd frontend
- npm install
- npm run dev
-
- # run the "backend"
- cd backend
- npm install
- npm start
-
- # now you can access by this url: localhost:5173
- ```
+ - Website: https://nk-blog-project.netlify.app
+ - API: https://blog-project-0gqp.onrender.com (check project for routes)
 
 # Author
  Nicolas Klein Faria de Araujo <br>
