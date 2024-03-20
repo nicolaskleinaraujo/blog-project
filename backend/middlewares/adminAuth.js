@@ -7,7 +7,7 @@ function adminAuth(req, res, next) {
   if (authHeader != null) {
     const authToken = authHeader.split(" ")[1]
     
-    jwt.verify(authToken, process.env.jwt_secret, (err, data) => {
+    jwt.verify(authToken, process.env.JWT_SECRET, (err, data) => {
       if (err) {
         res.status(401).json({ message: "Invalid Token" })
       } else {
