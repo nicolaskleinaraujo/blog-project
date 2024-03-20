@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const cors = require("cors")
 const connection = require("./database/db")
+const port = process.env.PORT || 3000
 
 const categoriesController = require("./categories/CategoriesController")
 const articlesController = require("./articles/ArticlesController")
@@ -22,11 +23,11 @@ connection
   .then(() => console.log("Connected to the database"))
   .catch((err) => console.log(err))
 
-// Controller Routes 
+// Controller Routes
 app.use("/", categoriesController)
 app.use("/", articlesController)
 app.use("/", usersController)
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Server running!")
 })
