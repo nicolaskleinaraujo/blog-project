@@ -14,12 +14,12 @@ const Category = () => {
         e.preventDefault()
         setTitle("")
         try {
-            dbFetch.post("/categories/save", { title }, {
+            await dbFetch.post("/categories/save", { title }, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            navigate("/")
+            navigate("/categories")
         } catch (error) {
             console.log(error)
         }
