@@ -16,6 +16,12 @@
     margin-bottom: .5em;
 }
 
+.home img {
+    margin: auto;
+    display: block;
+    width: 20em;
+}
+
 .home div hr {
     margin-bottom: .2em;
 }

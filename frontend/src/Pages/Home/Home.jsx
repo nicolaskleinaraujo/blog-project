@@ -4,13 +4,13 @@ import styles from "./Home.module.css"
 // Modules
 import dbFetch from "../../axios/config"
 import { useState, useEffect, useContext } from "react"
-import { Link, useLocation, useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 // Context
 import { AuthContext } from "../../context/AuthContext"
 
 const Home = () => {
-  const location = useLocation()
+  const [loading, setLoading] = useState(true)
   const { auth } = useContext(AuthContext)
 
   let { num } = useParams()
@@ -24,11 +24,12 @@ const Home = () => {
     const res = await dbFetch.get(`/articles/page/${num}`)
     setArticles(res.data.page.rows)
     setNext(res.data.next)
+    if(loading){setLoading(false)}
   }
 
   useEffect(() => {
     getArticles()
-  }, [location])
+  }, [loading])
 
   return (
     <div className={styles.home}>
@@ -40,7 +41,9 @@ const Home = () => {
         </div>
       }
 
-      {articles &&
+      {loading ? (
+        <img src="./loading.svg" alt="Loading" />
+      ) : (
         articles.map((article) => (
           <div key={article.id}>
             <h2>{article.title}</h2>
@@ -48,11 +51,11 @@ const Home = () => {
             <Link to={`/article/${article.slug}`}>Ler Artigo</Link>
           </div>
         ))
-      }
+      )}
 
       <menu>
-        {num > 1 && <Link className={styles.prev_page} to={`/${num - 1}`}>⬅ Página Anterior</Link>}
-        {next && <Link className={styles.next_page} to={`/${1 + parseInt(num)}`}>Proxima Página ➡</Link>}
+        {num > 1 && <Link className={styles.prev_page} to={`/${num - 1}`} onClick={() => setLoading(true)}>⬅ Página Anterior</Link>}
+        {next && <Link className={styles.next_page} to={`/${1 + parseInt(num)}`} onClick={() => setLoading(true)}>Proxima Página ➡</Link>}
       </menu>
     </div>
   )
