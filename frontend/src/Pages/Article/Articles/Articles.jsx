@@ -10,7 +10,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 const Articles = () => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     const [articles, setArticles] = useState([])
     const getArticles = async() => {
@@ -42,7 +42,9 @@ const Articles = () => {
         <div className={styles.articles}>
             <h1>Artigos</h1>
 
-            {articles &&
+            {loading ? (
+                <img src=".././loading.svg" alt="Loading" />
+            ) : (
                 articles.map((article) => (
                     <div key={article.id}>
                         <h2>{article.title}</h2>
@@ -50,7 +52,7 @@ const Articles = () => {
                         <button onClick={() => deleteArticle(article.id)}><FaTrash /></button>
                     </div>
                 ))
-            }
+            )}
         </div>
     )
 }

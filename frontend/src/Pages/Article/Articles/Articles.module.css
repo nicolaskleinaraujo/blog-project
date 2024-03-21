@@ -3,6 +3,12 @@
     padding: 1em;
 }
 
+.articles img {
+    margin: auto;
+    display: block;
+    width: 18em;
+}
+
 .articles div {
     margin: 1em;
     padding: .5em;
