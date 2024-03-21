@@ -10,7 +10,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 const Category = () => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     const [categories, setCategories] = useState([])
     const getCategories = async() => {
@@ -46,15 +46,17 @@ const Category = () => {
         <div className={styles.categories}>
             <h1>Categorias</h1>
 
-            {categories &&
+            {loading ? (
+                <img src=".././loading.svg" alt="Loading" />
+            ) : (
                 categories.map((category) => (
-                   <div key={category.id}>
+                    <div key={category.id}>
                         <h2>{category.title}</h2>
                         <Link to={`/update-category/${category.id}`}><FaEdit /></Link>
                         <button onClick={() => deleteCategory(category.id)}><FaTrash /></button>
-                   </div>
+                    </div>
                 ))
-            }
+            )}
         </div>
     )
 }
