@@ -7,15 +7,15 @@ import { useState, useEffect } from "react"
 import { useParams, Link, useLocation } from "react-router-dom"
 
 const ArtByCat = () => {
-    const location = useLocation()
+    const [loading, setLoading] = useState(true)
     const { slug } = useParams()
+    const location = useLocation()
 
-    const [category, setCategory] = useState([])
     const [articles, setArticles] = useState([])
     const getArticles = async() => {
         const res = await dbFetch.get(`/category/${slug}`)
-        setCategory(res.data)
         setArticles(res.data.articles)
+        if(loading){setLoading(false)}
     }
 
     useEffect(() => {
@@ -24,8 +24,11 @@ const ArtByCat = () => {
 
     return (
         <div className={styles.art_by_cat}>
-            <h1>{category.title}</h1>
-            {articles &&
+            <h1>{slug}</h1>
+
+            {loading ? (
+                <img src=".././loading.svg" alt="Loading" />
+            ) : (
                 articles.map((article) => (
                     <div key={article.id}>
                         <h2>{article.title}</h2>
@@ -33,7 +36,7 @@ const ArtByCat = () => {
                         <Link to={`/article/${article.slug}`}>Ler Artigo</Link>
                     </div>
                 ))
-            }
+            )}
         </div>
     )
 }

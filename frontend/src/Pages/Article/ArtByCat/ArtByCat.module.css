@@ -3,6 +3,12 @@
     padding: 1em;
 }
 
+.art_by_cat img {
+    display: block;
+    margin: auto;
+    width: 18em;
+}
+
 .art_by_cat div {
     margin: 1em;
     padding: .5em;
