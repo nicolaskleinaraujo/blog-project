@@ -7,12 +7,14 @@ import { IoMenu, IoClose } from "react-icons/io5";
 // Modules
 import dbFetch from "../../axios/config"
 import { useEffect, useState, useContext } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 // Context
 import { AuthContext } from "../../context/AuthContext"
 
 const Navbar = () => {
+    const location = useLocation()
+
     const [categories, setCategories] = useState()
     const getCategories = async() => {
         const res = await dbFetch.get("/admin/categories")
@@ -35,7 +37,7 @@ const Navbar = () => {
 
     useEffect(() => {
         getCategories()
-    }, [auth])
+    }, [auth, location])
 
     return (
         <nav className={styles.nav}>
@@ -67,8 +69,7 @@ const Navbar = () => {
                         <li><Link to="/register">Criar</Link></li>
                         <li><Link to="/login">Logar</Link></li>
                     </p>
-                )
-                }
+                )}
             </div>
         </nav>
     )
