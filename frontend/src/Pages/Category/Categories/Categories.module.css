@@ -3,6 +3,12 @@
     padding: 1em;
 }
 
+.categories img {
+    width: 18em;
+    margin: auto;
+    display: block;
+}
+
 .categories div {
     margin: 1em;
     padding: .5em;
