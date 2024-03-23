@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 const NewArticle = () => {
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
     const [title, setTitle] = useState("")
@@ -22,7 +23,8 @@ const NewArticle = () => {
     const handleSubmit = async(e) => {
         e.preventDefault()
 
-        if(articleCategory != 0) {
+        if(articleCategory != 0 && title != "" && body != "") {
+            setLoading(true)
             try {
                 await dbFetch.post("/articles/save", {
                     title,
@@ -34,13 +36,12 @@ const NewArticle = () => {
                     } 
                 })
                 navigate("/articles")
-            } catch (error) {
-                console.log(error)
+            } catch (err) {
+                setTitle("")
+                setBody("")
+                setArticleCategory(0)
+                setLoading(false)
             }
-
-            setTitle("")
-            setBody("")
-            setArticleCategory(0)
         }
     }
 
@@ -53,35 +54,41 @@ const NewArticle = () => {
             <form onSubmit={handleSubmit}>
                 <h1>Criar Artigo</h1>
 
-                <input 
-                    type="text" 
-                    name="title" 
-                    id="title" 
-                    placeholder="Digite o seu titulo"
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
-                />
+                {loading ? (
+                    <img src=".././loading.svg" alt="Loading" />
+                ) : (
+                    <div>
+                        <input 
+                            type="text" 
+                            name="title" 
+                            id="title" 
+                            placeholder="Digite o seu titulo"
+                            onChange={(e) => setTitle(e.target.value)}
+                            value={title}
+                        />
 
-                <textarea 
-                    name="body" 
-                    id="body" 
-                    cols="30" 
-                    rows="10" 
-                    placeholder="Digite o seu texto" 
-                    onChange={(e) => setBody(e.target.value)}
-                    value={body}
-                ></textarea>
+                        <textarea 
+                            name="body" 
+                            id="body" 
+                            cols="30" 
+                            rows="10" 
+                            placeholder="Digite o seu texto" 
+                            onChange={(e) => setBody(e.target.value)}
+                            value={body}
+                        ></textarea>
 
-                <select name="category" defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
-                    <option value="placeholder" hidden>--- SELECIONE UMA CATEGORIA ---</option>
-                    {categories && 
-                        categories.map((category) => (
-                            <option key={category.id} value={category.id}>{category.title}</option>
-                        ))
-                    }
-                </select>
-                
-                <button type="submit">Criar</button>
+                        <select name="category" defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
+                            <option value="placeholder" hidden>--- SELECIONE UMA CATEGORIA ---</option>
+                            {categories && 
+                                categories.map((category) => (
+                                    <option key={category.id} value={category.id}>{category.title}</option>
+                                ))
+                            }
+                        </select>
+
+                        <button type="submit">Criar</button>
+                    </div>
+                )}
             </form>
         </div>
     )
