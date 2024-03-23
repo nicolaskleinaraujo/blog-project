@@ -7,12 +7,17 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const Category = () => {
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
+
     const [title, setTitle] = useState("")
 
     const handleSubmit = async(e) => {
         e.preventDefault()
+
+        setLoading(true)
         setTitle("")
+
         try {
             await dbFetch.post("/categories/save", { title }, {
                 headers: {
@@ -21,7 +26,7 @@ const Category = () => {
             })
             navigate("/categories")
         } catch (error) {
-            console.log(error)
+            setLoading(false)
         }
     }
 
@@ -30,17 +35,24 @@ const Category = () => {
             <form onSubmit={handleSubmit}>
                 <h1>Criar nova categoria</h1>
 
-                <label>
-                    <input 
-                        type="text" 
-                        name="title" 
-                        id="title" 
-                        placeholder="Digite o novo titulo" 
-                        onChange={(e) => setTitle(e.target.value)} 
-                        value={title}
-                    />
-                </label>
-                <button type="submit">Adicionar</button>
+                {loading ? (
+                    <img src=".././loading.svg" alt="Loading" />
+                ) : (
+                    <div>
+                        <label>
+                            <input 
+                                type="text" 
+                                name="title" 
+                                id="title" 
+                                placeholder="Digite o novo titulo" 
+                                onChange={(e) => setTitle(e.target.value)} 
+                                value={title}
+                            />
+                        </label>
+
+                        <button type="submit">Adicionar</button>
+                    </div>
+                )}
             </form>
         </div>
     )

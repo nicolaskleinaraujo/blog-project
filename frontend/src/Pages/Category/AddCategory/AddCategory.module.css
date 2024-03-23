@@ -17,6 +17,12 @@
     color: black;
 }
 
+.add_category form img {
+    width: 12em;
+    display: block;
+    margin: auto;
+}
+
 .add_category form input {
     display: block;
     width: 90%;
