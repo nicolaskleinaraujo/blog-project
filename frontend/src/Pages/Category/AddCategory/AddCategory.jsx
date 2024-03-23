@@ -15,18 +15,18 @@ const Category = () => {
     const handleSubmit = async(e) => {
         e.preventDefault()
 
-        setLoading(true)
-        setTitle("")
-
-        try {
-            await dbFetch.post("/categories/save", { title }, {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            navigate("/categories")
-        } catch (error) {
-            setLoading(false)
+        if(title != "") {
+            setLoading(true)
+            try {
+                await dbFetch.post("/categories/save", { title }, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("token")}`
+                    }
+                })
+                navigate("/categories")
+            } catch (err) {
+                setLoading(false)
+            }
         }
     }
 
