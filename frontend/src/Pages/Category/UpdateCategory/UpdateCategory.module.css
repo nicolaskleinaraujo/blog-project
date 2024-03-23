@@ -17,6 +17,12 @@
     color: black;
 }
 
+.update_category form img {
+    width: 12em;
+    margin: auto;
+    display: block;
+}
+
 .update_category form input {
     display: block;
     width: 90%;
