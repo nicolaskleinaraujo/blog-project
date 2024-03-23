@@ -17,6 +17,12 @@
     color: black;
 }
 
+.update_article form img {
+    width: 12em;
+    margin: auto;
+    display: block;
+}
+
 .update_article form input,
 .update_article form textarea,
 .update_article form select {

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 const UpdateArticle = () => {
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
     const { id } = useParams()
 
@@ -24,6 +25,7 @@ const UpdateArticle = () => {
         setTitle(res.data.article.title)
         setBody(res.data.article.body)
         setArticleCategory(res.data.article.category.title)
+        setLoading(false)
     }
 
     const [categories, setCategories] = useState([])
@@ -35,7 +37,8 @@ const UpdateArticle = () => {
     const handleSubmit = async(e) => {
         e.preventDefault()
 
-        if(!isNaN(articleCategory)) {
+        if(!isNaN(articleCategory) && body != "" && title != "") {
+            setLoading(true)
             try {
                 await dbFetch.post(`/articles/update/${id}`, {
                     title,
@@ -48,7 +51,7 @@ const UpdateArticle = () => {
                 })
                 navigate("/articles")
             } catch (err) {
-                console.log(err)
+                setLoading(false)
             }
         }
     }
@@ -63,33 +66,39 @@ const UpdateArticle = () => {
             <form onSubmit={handleSubmit}>
                 <h1>Atualizar Artigo</h1>
 
-                <input 
-                    type="text" 
-                    name="title" 
-                    id="title" 
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
-                />
+                {loading ? (
+                    <img src=".././loading.svg" alt="Loading" />
+                ) : (
+                    <div>
+                        <input 
+                            type="text" 
+                            name="title" 
+                            id="title" 
+                            onChange={(e) => setTitle(e.target.value)}
+                            value={title}
+                        />
 
-                <textarea 
-                    name="body" 
-                    id="body" 
-                    cols="30" 
-                    rows="10" 
-                    onChange={(e) => setBody(e.target.value)} 
-                    value={body}
-                ></textarea>
+                        <textarea 
+                            name="body" 
+                            id="body" 
+                            cols="30" 
+                            rows="10" 
+                            onChange={(e) => setBody(e.target.value)} 
+                            value={body}
+                        ></textarea>
 
-                <select name="category" defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
-                    <option value="placeholder" hidden>--- ESCOLHA UMA CATEGORIA ---</option>
-                    {categories &&
-                        categories.map((category) => (
-                            <option key={category.id} value={category.id}>{category.title}</option>
-                        ))
-                    }
-                </select>
+                        <select name="category" defaultValue="placeholder" onChange={(e) => setArticleCategory(e.target.value)}>
+                            <option value="placeholder" hidden>--- ESCOLHA UMA CATEGORIA ---</option>
+                            {categories &&
+                                categories.map((category) => (
+                                    <option key={category.id} value={category.id}>{category.title}</option>
+                                ))
+                            }
+                        </select>
 
-                <button type="submit">Atualizar</button>
+                        <button type="submit">Atualizar</button>
+                    </div>
+                )}
             </form>
         </div>
     )
