@@ -17,6 +17,12 @@
     color: black;
 }
 
+.new_article form img {
+    width: 18em;
+    margin: auto;
+    display: block;
+}
+
 .new_article form input,
 .new_article form textarea,
 .new_article form select {
