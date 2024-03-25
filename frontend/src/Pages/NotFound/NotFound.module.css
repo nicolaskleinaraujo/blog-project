@@ -1,0 +1,11 @@
+.not_found {
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.not_found img {
+    margin-bottom: 1em;
+}
