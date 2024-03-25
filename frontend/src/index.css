@@ -33,6 +33,10 @@ h2 {
     a {
         font-size: 1.5em;
     }
+
+    button {
+        font-size: 1.3em;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -50,5 +54,9 @@ h2 {
 
     a {
         font-size: 1.9em;
+    }
+
+    button {
+        font-size: 1.7em;
     }
 }
