@@ -4,12 +4,7 @@
     margin: auto;
 }
 
-.read_article h1 {
-    font-size: 1.8em;
-}
-
 .read_article p {
-    font-size: 1.2em;
     width: 80%;
     margin: 0 auto 2em auto;
 }
