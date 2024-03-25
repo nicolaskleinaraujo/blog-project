@@ -37,6 +37,13 @@ h2 {
     button {
         font-size: 1.3em;
     }
+
+    input,
+    textarea,
+    select,
+    option {
+        font-size: 0.9em;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -58,5 +65,12 @@ h2 {
 
     button {
         font-size: 1.7em;
+    }
+
+    input,
+    textarea,
+    select,
+    option {
+        font-size: 1.2em;
     }
 }
