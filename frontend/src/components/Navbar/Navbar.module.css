@@ -67,6 +67,11 @@
     cursor: pointer;
 }
 
+.menu div {
+    margin-top: 1.3em;
+    text-align: center;
+}
+
 @media screen and (min-width: 550px) {
     .nav {
         padding: 1em 0;
