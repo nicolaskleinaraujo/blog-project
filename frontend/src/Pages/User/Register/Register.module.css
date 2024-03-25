@@ -32,6 +32,7 @@
 .register form p a {
     color: black;
     text-decoration: underline;
+    font-size: 1em;
 }
 
 .register form label input {

@@ -32,6 +32,7 @@
 .login form p a {
     color: black;
     text-decoration: underline;
+    font-size: 1em;
 }
 
 .login form label input {
