@@ -15,16 +15,18 @@ const Register = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        setLoading(true)
-
-        try {
-            await dbFetch.post("/users/save", {
-                email,
-                password
-            })
-            navigate("/login")
-        } catch (err) {
-            setLoading(false)
+        
+        if (email != "" && password != "") {
+            setLoading(true)
+            try {
+                await dbFetch.post("/users/save", {
+                    email,
+                    password
+                })
+                navigate("/login")
+            } catch (err) {
+                setLoading(false)
+            }
         }
     }
 
