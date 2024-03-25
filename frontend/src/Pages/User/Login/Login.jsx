@@ -19,25 +19,24 @@ const Login = () => {
     const { setAuth } = useContext(AuthContext)
     const handleSubmit = async(e) => {
         e.preventDefault()
-        setLoading(true)
 
-        setEmail("")
-        setPassword("")
-
-        try {
-            const res = await dbFetch.post("/authenticate", {
-                email,
-                password
-            })
-    
-            if (res.status === 200) {
-                localStorage.setItem("token", res.data.token)
-                localStorage.setItem("authenticated", true)
-                setAuth(true)
-                navigate("/")
+        if (email != "" && password != "") {
+            setLoading(true)
+            try {
+                const res = await dbFetch.post("/authenticate", {
+                    email,
+                    password
+                })
+        
+                if (res.status === 200) {
+                    localStorage.setItem("token", res.data.token)
+                    localStorage.setItem("authenticated", true)
+                    setAuth(true)
+                    navigate("/")
+                }
+            } catch (error) {
+                setLoading(false)
             }
-        } catch (error) {
-            setLoading(false)
         }
     }
 
