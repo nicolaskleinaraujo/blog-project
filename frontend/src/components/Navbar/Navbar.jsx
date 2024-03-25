@@ -65,10 +65,10 @@ const Navbar = () => {
                 {auth ? (
                     <p><li><button onClick={() => logOut()}>Sair</button></li></p>
                 ) : (
-                    <p>
+                    <div>
                         <li><Link to="/register">Criar</Link></li>
                         <li><Link to="/login">Logar</Link></li>
-                    </p>
+                    </div>
                 )}
             </div>
         </nav>
