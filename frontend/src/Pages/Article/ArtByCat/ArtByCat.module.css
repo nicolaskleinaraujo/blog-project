@@ -1,11 +1,12 @@
 .art_by_cat {
     background-color: #1c93d3;
     padding: 1em;
+    min-height: 75vh;
 }
 
 .art_by_cat img {
     display: block;
-    margin: auto;
+    margin: 5% auto;
     width: 18em;
 }
 
