@@ -5,23 +5,23 @@ import { useEffect, useContext } from "react"
 // Context
 import { AuthContext } from "./context/AuthContext"
 
-// Routes
+// Router
 import Router from "./utils/Router"
 
 function App() {
   const { setAuth } = useContext(AuthContext)
 
   const tryAuth = async() => {
-    const res = await dbFetch.get("/try-authenticate", {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token")
-      }
-    })
+    try {
+      await dbFetch.get("/try-authenticate", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token")
+        }
+      })
 
-    if (res.status === 200) {
       localStorage.setItem("authenticated", true)
       setAuth(true)
-    } else {
+    } catch (error) {
       localStorage.setItem("authenticated", false)
       setAuth(false)
     }
