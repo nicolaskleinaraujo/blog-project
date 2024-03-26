@@ -1,7 +1,15 @@
+.read_article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+}
+
 .read_article img {
     width: 18em;
     display: block;
-    margin: auto;
+    margin: 5% auto;
 }
 
 .read_article p {
