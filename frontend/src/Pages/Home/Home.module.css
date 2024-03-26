@@ -1,6 +1,7 @@
 .home {
     background-color: #1c93d3;
     padding: 1em 0 .1em 0;
+    min-height: 75vh;
 }
 
 .home div {
@@ -17,7 +18,7 @@
 }
 
 .home img {
-    margin: auto;
+    margin: 5% auto;
     display: block;
     width: 18em;
 }
