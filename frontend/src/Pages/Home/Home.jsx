@@ -4,7 +4,7 @@ import styles from "./Home.module.css"
 // Modules
 import dbFetch from "../../axios/config"
 import { useState, useEffect, useContext } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 
 // Context
 import { AuthContext } from "../../context/AuthContext"
@@ -12,6 +12,7 @@ import { AuthContext } from "../../context/AuthContext"
 const Home = () => {
   const [loading, setLoading] = useState(true)
   const { auth } = useContext(AuthContext)
+  const location = useLocation()
 
   let { num } = useParams()
   if (isNaN(num) || null){
@@ -29,7 +30,7 @@ const Home = () => {
 
   useEffect(() => {
     getArticles()
-  }, [loading])
+  }, [location])
 
   return (
     <div className={styles.home}>
