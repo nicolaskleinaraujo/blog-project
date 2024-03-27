@@ -54,10 +54,12 @@ const Home = () => {
         ))
       )}
 
-      <menu>
-        {num > 1 && <Link className={styles.prev_page} to={`/${num - 1}`} onClick={() => setLoading(true)}>⬅ Página Anterior</Link>}
-        {next && <Link className={styles.next_page} to={`/${1 + parseInt(num)}`} onClick={() => setLoading(true)}>Proxima Página ➡</Link>}
-      </menu>
+      {!loading &&
+        <menu>
+          {num > 1 && <Link className={styles.prev_page} to={`/${num - 1}`} onClick={() => setLoading(true)}>⬅ Página Anterior</Link>}
+          {next && <Link className={styles.next_page} to={`/${1 + parseInt(num)}`} onClick={() => setLoading(true)}>Proxima Página ➡</Link>}
+        </menu>
+      }
     </div>
   )
 }
