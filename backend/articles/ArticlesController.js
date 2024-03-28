@@ -127,7 +127,7 @@ router.get("/articles/page/:num", async (req, res) => {
   if (isNaN(num) || num == 1) {
     offset = 0
   } else {
-    offset = parseInt(num) * 4
+    offset = (parseInt(num) - 1) * 8
   }
 
   try {
