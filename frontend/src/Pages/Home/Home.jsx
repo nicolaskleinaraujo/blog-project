@@ -22,10 +22,11 @@ const Home = () => {
   const [articles, setArticles] = useState([])
   const [next, setNext] = useState(true)
   const getArticles = async() => {
+    setLoading(true)
     const res = await dbFetch.get(`/articles/page/${num}`)
     setArticles(res.data.page.rows)
     setNext(res.data.next)
-    if(loading){setLoading(false)}
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
+      <button onClick={() => console.log(loading)}></button>
       {!auth &&
         <div>
           <h1>Blog de Tecnologia</h1>
