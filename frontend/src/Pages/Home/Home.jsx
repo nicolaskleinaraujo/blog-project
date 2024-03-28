@@ -35,7 +35,6 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <button onClick={() => console.log(loading)}></button>
       {!auth &&
         <div>
           <h1>Blog de Tecnologia</h1>
